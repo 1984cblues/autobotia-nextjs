@@ -1,331 +1,295 @@
 'use client'
 
-import React from 'react'
-import { SectionWrapper } from '@/components/ui/SectionWrapper'
-import { Button } from '@/components/ui/Button'
-import { GlowCard } from '@/components/ui/GlowCard'
-import { AccordionItem } from '@/components/ui/AccordionItem'
-import { StatCounter } from '@/components/ui/StatCounter'
-import styles from './page.module.css'
+import { useRef, useEffect, useState } from 'react'
+import Link from 'next/link'
+import { motion } from 'framer-motion'
+import { Monitor, MapPin, BookOpen, Brain, ArrowRight, CheckCircle } from 'lucide-react'
+import Image from 'next/image'
+
+/* ── Fade-in on scroll ─────────────────────────────── */
+function FadeIn({ children, delay = 0, className = '', style = {} }: {
+  children: React.ReactNode; delay?: number; className?: string; style?: React.CSSProperties
+}) {
+  const ref = useRef<HTMLDivElement>(null)
+  const [visible, setVisible] = useState(false)
+  useEffect(() => {
+    const el = ref.current; if (!el) return
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect() } }, { threshold: 0.12 })
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [])
+  return (
+    <div ref={ref} className={className} style={{ opacity: visible ? 1 : 0, transform: visible ? 'translateY(0)' : 'translateY(28px)', transition: `opacity 0.55s ease ${delay}ms, transform 0.55s ease ${delay}ms`, ...style }}>
+      {children}
+    </div>
+  )
+}
+
+const services = [
+  { icon: Monitor, num: '01', title: 'Web Design & LP', desc: 'Sites de alta conversão construídos artesanalmente — do copywriting ao deploy. Next.js, a stack do Vale do Silício.', href: '/servicos/web-design' },
+  { icon: MapPin, num: '02', title: 'SEO Local', desc: 'Apareça quando o cliente está com o cartão de crédito na mão, pesquisando "perto de mim" no Google e Maps.', href: '/servicos/seo-local' },
+  { icon: BookOpen, num: '03', title: 'SEO Content', desc: 'Clusters semânticos e artigos técnicos que constroem autoridade orgânica sustentável no longo prazo.', href: '/servicos/seo' },
+  { icon: Brain, num: '04', title: 'Visibilidade em IAs', desc: 'Seu negócio citado no ChatGPT, Gemini e Perplexity. O canal de descoberta que ninguém está trabalhando.', href: '/servicos/geo' },
+]
+
+const works = [
+  { title: 'ALEX OLIVEIRA', subtitle: 'Advocacia Especializada', image: '/works/1.webp', year: '2025' },
+  { title: 'VENDMIX', subtitle: 'Marketplace B2B', image: '/works/2.webp', year: '2025' },
+  { title: 'CLÍNICA PREMIUM', subtitle: 'Saúde e Estética', image: '/works/3.webp', year: '2024' },
+  { title: 'RESTAURANTE AROMA', subtitle: 'Alta Gastronomia', image: '/works/4.webp', year: '2024' },
+]
+
+const testimonials = [
+  { quote: 'O site novo aumentou nossa captação de clientes em mais de 3x em 2 meses. A equipe entendeu exatamente o posicionamento que precisávamos.', author: 'Alex Oliveira', role: 'Advogado | Direito do Consumidor' },
+  { quote: 'Profissionalismo do início ao fim. O SEO Local fez nosso restaurante aparecer no topo do Google Maps e as reservas subiram imediatamente.', author: 'Ana Reichert', role: 'Proprietária | Restaurante Aroma' },
+  { quote: 'Em menos de 30 dias, a Autobotia entregou uma landing page que converteu mais do que todas as nossas campanhas de tráfego pago juntas.', author: 'Marcos Vieira', role: 'CEO | Vendmix' },
+]
+
+const steps = [
+  { n: '01', title: 'UX & Copywriting', desc: 'Entendemos seu serviço e construímos narrativas que o cérebro deseja comprar.' },
+  { n: '02', title: 'Infraestrutura', desc: 'Desenvolvimento em Next.js focando 100% nos Core Web Vitals do Google.' },
+  { n: '03', title: 'SEO e Autoridade', desc: 'Abrimos as torneiras de tráfego local com conteúdo AI-optimized.' },
+  { n: '04', title: 'Manutenção', desc: 'Apoiamos seu crescimento mês a mês, sem templates quebrados no caminho.' },
+]
 
 export function HomeClient() {
-  const [openFaq, setOpenFaq] = React.useState<number | null>(0)
+  const shapeRef = useRef<HTMLDivElement>(null)
 
-  const faqs = [
-    {
-      q: 'Qual é o diferencial de um site de alta performance?',
-      a: 'Diferente de templates genéricos e lentos, desenvolvemos na stack Next.js (a mesma de grandes corporações). Garantimos velocidade de carregamento em milissegundos, responsividade fluida e uma estrutura pronta para converter o seu tráfego em clientes reais.',
-    },
-    {
-      q: 'O que acontece depois que meu site for lançado?',
-      a: 'A estrutura é apenas o primeiro pilar (Ticket de Entrada). Após o lançamento, oferecemos pacotes de SEO Local e estratégias focadas em Inteligência Artificial para colocar sua nova "casa digital" nas primeiras posições de busca e recomendações.',
-    },
-    {
-      q: 'Vocês atendem empresas de qualquer segmento?',
-      a: 'Sim. Nossa metodologia é focada em conversão para empresas que prestam serviços ou vendem produtos de alto valor agregado: clínicas, escritórios, indústrias, profissionais liberais e muito mais.',
-    },
-    {
-      q: 'Qual é o prazo médio de entrega de um projeto Web?',
-      a: 'Por utilizarmos engenharia moderna e design validado, nossos projetos de entrada geralmente levam entre 15 a 30 dias com um escopo fechado, perfeitamente arquitetado para o que a sua empresa precisa.',
-    },
-  ]
-
-  const problems = [
-    {
-      icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
-        </svg>
-      ),
-      stat: '90%',
-      label: 'das empresas têm sites que parecem panfletos digitais, sem copy e sem fluxo de vendas',
-    },
-    {
-      icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M12 2a10 10 0 1 0 10 10H12V2z"/><path d="M21.18 8.02c-1-2.3-2.85-4.17-5.16-5.18"/>
-        </svg>
-      ),
-      stat: '75%',
-      label: 'do tráfego pago é desperdiçado quando enviado para Landing Pages lentas e genéricas',
-    },
-    {
-      icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
-        </svg>
-      ),
-      stat: '3s',
-      label: 'de lentidão é suficiente para que metade dos usuários abandonem a sua página',
-    },
-  ]
+  useEffect(() => {
+    const el = shapeRef.current; if (!el) return
+    const move = (e: MouseEvent) => {
+      const { innerWidth: W, innerHeight: H } = window
+      const x = (e.clientX / W - 0.5) * 18
+      const y = (e.clientY / H - 0.5) * 18
+      el.style.transform = `perspective(1000px) rotateY(${x}deg) rotateX(${-y}deg)`
+    }
+    window.addEventListener('mousemove', move)
+    return () => window.removeEventListener('mousemove', move)
+  }, [])
 
   return (
     <>
-      {/* ================= HERO SECTION ================= */}
-      <section className={styles.hero}>
-        <div className={styles.heroOverlay} aria-hidden="true" />
-        <div className={styles.heroAnimation} aria-hidden="true" />
-
-        {/* Floating UI cards */}
-        <div className={`${styles.floatingCardWrapper} ${styles.floating1}`} aria-hidden="true">
-          <div className={styles.floatingCard}>
-            <div className={styles.floatingIcon}>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
-              </svg>
-            </div>
-            <div className={styles.floatingContent}>
-              <h4>SEO Local Ativado</h4>
-              <p>142 novas interações no Google Maps esta semana.</p>
-            </div>
-          </div>
-        </div>
-
-        <div className={`${styles.floatingCardWrapper} ${styles.floating2}`} aria-hidden="true">
-          <div className={styles.floatingCard}>
-            <div className={styles.floatingIcon}>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M12 2a10 10 0 1 0 10 10H12V2z"/>
-              </svg>
-            </div>
-            <div className={styles.floatingContent}>
-              <h4>Citado no ChatGPT</h4>
-              <p>Sua marca foi mencionada como referência do setor.</p>
-            </div>
-          </div>
-        </div>
-
-        <div className={`${styles.floatingCardWrapper} ${styles.floating3}`} aria-hidden="true">
-          <div className={styles.floatingCard}>
-            <div className={styles.floatingIcon}>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M2 12h4l3 8 5-16 3 8h5"/>
-              </svg>
-            </div>
-            <div className={styles.floatingContent}>
-              <h4>+312% impressões</h4>
-              <p>Via AI Overviews nos últimos 30 dias.</p>
-            </div>
-          </div>
-        </div>
-
-        <div className={styles.heroContent}>
-          <SectionWrapper animation="fade-up">
-            <div className={styles.heroLabel}>
-              <span>Arquitetura de Conversão Premium</span>
-            </div>
-            <h1 className={styles.heroTitle}>
-              Pare de ter um panfleto online,<br />
-              tenha um <span className={styles.heroHighlight}>Ecossistema de Vendas</span>.
-            </h1>
-            <p className={styles.heroSubtitle}>
-              Desenvolvemos Sites Profissionais e Landing Pages de altíssima performance para escalar 
-              seu engajamento orgânico, SEO Local e posicionamento com IAs.
-            </p>
-            <div className={styles.ctaGroup}>
-              <Button size="lg" variant="primary" href="/simulador">
-                Faça uma Análise Gratuita
-              </Button>
-              <a
-                href="#servicos"
-                style={{
-                  textDecoration: 'none',
-                  color: '#fff',
-                  border: '1.5px solid rgba(255,255,255,0.45)',
-                  padding: '1rem 2.25rem',
-                  borderRadius: '9999px',
-                  fontWeight: 700,
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '0.5rem',
-                  transition: 'all 0.2s',
-                }}
-              >
-                Conhecer serviços ↓
+      {/* ═══════════════════════ HERO ═══════════════════════ */}
+      <section style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', padding: '7rem 0 5rem', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 60% 50%, #1a1a1a 0%, #000 100%)', zIndex: 0 }} />
+        <div className="container" style={{ position: 'relative', zIndex: 1, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center' }}>
+          {/* Copy */}
+          <div>
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+              <span className="section-label">Arquitetura de Conversão Premium</span>
+            </motion.div>
+            <motion.h1
+              initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.15 }}
+              style={{ fontSize: 'clamp(2.8rem, 5.5vw, 5rem)', fontWeight: 800, letterSpacing: '-0.04em', lineHeight: 1.05, marginBottom: '1.5rem' }}
+            >
+              PARE DE<br />
+              <span style={{ color: 'rgba(255,255,255,0.4)' }}>TER UM<br />PANFLETO.</span>
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.3 }}
+              style={{ fontSize: '1.05rem', color: 'rgba(255,255,255,0.5)', maxWidth: 440, lineHeight: 1.7, marginBottom: '2.5rem' }}
+            >
+              Desenvolvemos sites profissionais e estratégias de visibilidade que fazem sua empresa ser encontrada no Google e no ChatGPT.
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.45 }}
+              style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}
+            >
+              <Link href="/simulador" style={{ padding: '0.9rem 2rem', background: '#fff', color: '#000', fontWeight: 700, fontSize: '0.85rem', letterSpacing: '0.06em', textTransform: 'uppercase', transition: 'opacity 0.2s', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}
+                onMouseEnter={e => (e.currentTarget.style.opacity = '0.85')}
+                onMouseLeave={e => (e.currentTarget.style.opacity = '1')}>
+                Análise Gratuita <ArrowRight size={15} />
+              </Link>
+              <a href="#servicos" style={{ padding: '0.9rem 2rem', border: '1px solid rgba(255,255,255,0.25)', color: '#fff', fontWeight: 600, fontSize: '0.85rem', letterSpacing: '0.04em', textTransform: 'uppercase' }}>
+                Ver Serviços
               </a>
-            </div>
-            <p className={styles.heroCopy}>
-              Sem promessas vazias. Resultados escaláveis baseados em métricas reais.
-            </p>
-          </SectionWrapper>
-        </div>
-      </section>
+            </motion.div>
+          </div>
 
-      {/* ================= PROBLEMA / SOLUÇÃO (Storytelling) ================= */}
-      <section className={styles.problem}>
-        <div className="container">
-          <SectionWrapper animation="fade-up" className="text-center">
-            <span className="section-label">A Maioria Falha Aqui</span>
-            <h2>Por que seu site atual não converte?</h2>
-            <p className="mx-auto" style={{ maxWidth: 640, color: 'var(--color-text-muted)' }}>
-              Templates genéricos e código inflado matam os seus lucros. Um design premium somado 
-              a engenharia de milissegundos é a <strong>fórmula definitiva</strong> para fechar contratos de alto ticket.
-            </p>
-          </SectionWrapper>
-
-          <div className={styles.problemGrid}>
-            {problems.map((p, i) => (
-              <SectionWrapper key={i} animation="fade-up" delay={(i + 1) * 100}>
-                <div className={styles.problemCard}>
-                  <div className={styles.problemIcon}>{p.icon}</div>
-                  <div className={styles.problemStat}>{p.stat}</div>
-                  <p className={styles.problemLabel}>{p.label}</p>
+          {/* Animated shape */}
+          <motion.div
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.7, delay: 0.6 }}
+            ref={shapeRef}
+            style={{ transition: 'transform 0.12s ease-out', transformStyle: 'preserve-3d' }}
+            className="hide-mobile"
+          >
+            <div style={{ position: 'relative' }}>
+              <div style={{ position: 'absolute', bottom: -20, right: -20, width: '65%', height: '65%', border: '1px solid rgba(255,255,255,0.1)', background: '#050505', zIndex: -1 }} />
+              <div style={{ aspectRatio: '1/1', border: '1px solid rgba(255,255,255,0.12)', background: 'linear-gradient(135deg, #1c1c1c, #0a0a0a)', position: 'relative', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <div style={{ width: '70%', height: '70%', position: 'relative' }}>
+                  {[
+                    { top:0, left:0, width:'100%', height:2, transform:'scaleX(0)', animation:'growX 0.5s ease 1.2s forwards' },
+                    { bottom:0, right:0, width:'100%', height:2, transform:'scaleX(0)', animation:'growXR 0.5s ease 1.4s forwards', transformOrigin:'right' },
+                    { top:0, right:0, width:2, height:'100%', transform:'scaleY(0)', animation:'growY 0.5s ease 1.6s forwards' },
+                    { bottom:0, left:0, width:2, height:'100%', transform:'scaleY(0)', animation:'growYB 0.5s ease 1.8s forwards', transformOrigin:'bottom' },
+                  ].map((s, i) => (
+                    <div key={i} style={{ position:'absolute', background:'#fff', ...s } as React.CSSProperties} />
+                  ))}
+                  <div style={{ position:'absolute', top:'25%', left:'25%', width:'50%', height:'50%', border:'1px solid rgba(255,255,255,0.15)', display:'flex', alignItems:'center', justifyContent:'center' }}>
+                    <div style={{ width:'60%', height:'60%', background:'#111', display:'flex', alignItems:'center', justifyContent:'center' }}>
+                      <div style={{ width:'45%', height:'45%', background:'#fff' }} />
+                    </div>
+                  </div>
                 </div>
-              </SectionWrapper>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ================= SERVICES ================= */}
-      <section className={styles.services} id="servicos">
-        <div className="container">
-          <SectionWrapper animation="fade-up" className="text-center">
-            <span className="section-label">Web Ecosystem e Tráfego</span>
-            <h2>A Escada de Tração Autobotia</h2>
-            <p className="mx-auto" style={{ maxWidth: 660, color: 'var(--color-text-muted)' }}>
-              A sua fundação web é o Pilar Principal (Ticket 1). Com ela pronta e veloz, conectamos o sistema de 
-              tráfego inteligente local e estruturamos conteúdos densos para as máquinas recomendarem a sua marca.
-            </p>
-          </SectionWrapper>
-
-          <div className={styles.servicesGrid}>
-            <SectionWrapper animation="fade-up" delay={100} className={styles.bentoFeatured}>
-              <GlowCard
-                icon={<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>}
-                title="Pilar 1: Web Design & LP"
-                description="Seu Ticket de Entrada. Sites construídos artesanalmente do Copywriting ao Deploy. Usamos Next.js, a stack favorita das Startups no Vale do Silício para garantir que seu site se torne a fundação invencível do seu negócio."
-                linkText="Solicitar Orçamento"
-                href="/simulador"
-              />
-            </SectionWrapper>
-            
-            <SectionWrapper animation="fade-up" delay={200} className={styles.bentoWide}>
-              <GlowCard
-                icon={<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>}
-                title="Upsell: Tração & SEO Local"
-                description="Casa arrumada? Hora dos visitantes. Otimizamos seu Perfil no Google (Maps/Reviews) para capturar os clientes que estão com o cartão de crédito na mão 'perto de você'."
-                linkText="Conhecer SEO Local"
-                href="/servicos/seo-local"
-              />
-            </SectionWrapper>
-
-            <SectionWrapper animation="fade-up" delay={300} className={styles.bentoStandard}>
-              <GlowCard
-                icon={<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>}
-                title="SEO Content"
-                description="Clusters semânticos implementados em código."
-                linkText="Conteúdo"
-                href="/servicos/seo"
-              />
-            </SectionWrapper>
-            
-            <SectionWrapper animation="fade-up" delay={400} className={styles.bentoStandard}>
-              <GlowCard
-                icon={<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2a10 10 0 1 0 10 10H12V2z"/><path d="M21.18 8.02c-1-2.3-2.85-4.17-5.16-5.18"/></svg>}
-                title="Otimização IAs"
-                description="Modelamos seu site para recomendações em LLMs."
-                linkText="IA Visibility"
-                href="/servicos/geo"
-              />
-            </SectionWrapper>
-          </div>
-        </div>
-      </section>
-
-      {/* ================= STATS / SOCIAL PROOF ================= */}
-      <section className={styles.stats}>
-        <div className="container">
-          <SectionWrapper animation="fade-up" className="text-center" style={{ marginBottom: 'var(--space-7)' }}>
-            <span className="section-label">Números Reais</span>
-            <h2>Resultados que falam por si</h2>
-          </SectionWrapper>
-          <div className={styles.statsGrid}>
-            <SectionWrapper animation="scale" delay={100}>
-              <StatCounter value={150} suffix="+" label="Projetos Entregues" />
-            </SectionWrapper>
-            <SectionWrapper animation="scale" delay={200}>
-              <StatCounter value={97} suffix="%" label="Clientes Satisfeitos" />
-            </SectionWrapper>
-            <SectionWrapper animation="scale" delay={300}>
-              <StatCounter value={3} suffix="x" label="Crescimento Médio de Tráfego" />
-            </SectionWrapper>
-            <SectionWrapper animation="scale" delay={400}>
-              <StatCounter value={24} suffix="h" label="Tempo Médio de Resposta" />
-            </SectionWrapper>
-          </div>
-        </div>
-      </section>
-
-      {/* ================= HOW IT WORKS ================= */}
-      <section className={styles.howItWorks}>
-        <div className="container">
-          <SectionWrapper animation="fade-up" className="text-center">
-            <span className="section-label">Nosso Processo</span>
-            <h2>Metodologia Orientada ao Crescimento</h2>
-          </SectionWrapper>
-
-          <div className={styles.stepsGrid}>
-            {[
-              { n: '1', title: 'UX & Copywriting', desc: 'Entendemos seu serviço de alto ticket e construímos narrativas que o cérebro deseja comprar.' },
-              { n: '2', title: 'Infraestrutura', desc: 'Desenvolvimento em Headless/Next.js focando 100% no Core Web Vitals do Google.' },
-              { n: '3', title: 'SEO e Autoridade', desc: 'Sua base pronta, abrimos as torneiras de tráfego local e criação de artigos IA-Optimized.' },
-              { n: '4', title: 'Manutenção / Upsell', desc: 'Apoiamos seu crescimento mês a mês, sem templates quebrados no meio do caminho.' },
-            ].map((step, i) => (
-              <SectionWrapper key={i} animation="fade-up" delay={(i + 1) * 100}>
-                <div className={styles.step}>
-                  <div className={styles.stepNumber}>{step.n}</div>
-                  <h3>{step.title}</h3>
-                  <p>{step.desc}</p>
-                </div>
-              </SectionWrapper>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ================= FAQ ================= */}
-      <section className={styles.faqSection}>
-        <div className="container">
-          <SectionWrapper animation="fade-up" className="text-center" style={{ marginBottom: 'var(--space-6)' }}>
-            <span className="section-label">Perguntas Frequentes</span>
-            <h2>Dúvidas Comuns</h2>
-          </SectionWrapper>
-          <div className={styles.faqList}>
-            {faqs.map((faq, i) => (
-              <SectionWrapper key={i} animation="fade-up" delay={(i + 1) * 80}>
-                <AccordionItem
-                  title={faq.q}
-                  isOpen={openFaq === i}
-                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                >
-                  {faq.a}
-                </AccordionItem>
-              </SectionWrapper>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ================= FINAL CTA ================= */}
-      <section className={styles.finalCta}>
-        <div className="container">
-          <SectionWrapper animation="scale" className={styles.finalCtaContent}>
-            <h2>Pronto para escalar sua visibilidade digital?</h2>
-            <p>
-              Agende uma call de descoberta e vamos construir um plano de ação para a sua empresa
-              dominar os motores de busca e de inteligência artificial.
-            </p>
-            <div className={styles.ctaGroup}>
-              <Button size="lg" variant="primary" href="/simulador">
-                Iniciar Diagnóstico Agora
-              </Button>
-              <Button size="lg" variant="whatsapp" href="https://wa.me/5511922908507" target="_blank">
-                Falar no WhatsApp
-              </Button>
+              </div>
             </div>
-          </SectionWrapper>
+          </motion.div>
+        </div>
+        <style>{`
+          @keyframes growX  { to { transform: scaleX(1); } }
+          @keyframes growXR { to { transform: scaleX(1); } }
+          @keyframes growY  { to { transform: scaleY(1); } }
+          @keyframes growYB { to { transform: scaleY(1); } }
+          @media(max-width:767px){.hide-mobile{display:none!important}}
+        `}</style>
+      </section>
+
+      {/* ═══════════════════════ SERVIÇOS ═══════════════════ */}
+      <section id="servicos" style={{ padding: '6rem 0', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+        <div className="container">
+          <FadeIn style={{ marginBottom: '4rem' }}>
+            <span className="section-label">Nossa Abordagem</span>
+            <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3.25rem)', fontWeight: 800, letterSpacing: '-0.04em', maxWidth: 560 }}>
+              A Escada de<br /><span style={{ color: 'rgba(255,255,255,0.35)' }}>Tração Autobotia</span>
+            </h2>
+          </FadeIn>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '0' }}>
+            {services.map((s, i) => (
+              <FadeIn key={i} delay={i * 80}>
+                <Link href={s.href} style={{ display: 'block', padding: '2.5rem 2rem', borderTop: '1px solid rgba(255,255,255,0.08)', borderRight: i % 2 === 0 ? '1px solid rgba(255,255,255,0.08)' : 'none', transition: 'background 0.3s' }}
+                  onMouseEnter={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.03)')}
+                  onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1.5rem' }}>
+                    <s.icon size={22} color="rgba(255,255,255,0.5)" />
+                    <span style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.25)', letterSpacing: '0.1em' }}>{s.num}</span>
+                  </div>
+                  <h3 style={{ fontWeight: 700, fontSize: '1.05rem', letterSpacing: '-0.02em', marginBottom: '0.75rem' }}>{s.title}</h3>
+                  <p style={{ fontSize: '0.875rem', color: 'rgba(255,255,255,0.45)', lineHeight: 1.6 }}>{s.desc}</p>
+                  <div style={{ marginTop: '1.5rem', fontSize: '0.78rem', color: 'rgba(255,255,255,0.35)', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                    Saiba mais <ArrowRight size={13} />
+                  </div>
+                </Link>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════ TRABALHOS ═══════════════════ */}
+      <section style={{ padding: '6rem 0', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+        <div className="container">
+          <FadeIn style={{ marginBottom: '3rem', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '1rem' }}>
+            <div>
+              <span className="section-label">Trabalhos Selecionados</span>
+              <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, letterSpacing: '-0.04em' }}>
+                Últimos<br /><span style={{ color: 'rgba(255,255,255,0.35)' }}>Projetos</span>
+              </h2>
+            </div>
+            <Link href="/portfolio" style={{ fontSize: '0.8rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+              Ver Todos <ArrowRight size={14} />
+            </Link>
+          </FadeIn>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1px', background: 'rgba(255,255,255,0.06)' }}>
+            {works.map((w, i) => (
+              <FadeIn key={i} delay={i * 60}>
+                <div style={{ background: '#000', overflow: 'hidden', position: 'relative', cursor: 'pointer' }}
+                  onMouseEnter={e => { const img = e.currentTarget.querySelector('img') as HTMLImageElement; if (img) img.style.transform = 'scale(1.04)' }}
+                  onMouseLeave={e => { const img = e.currentTarget.querySelector('img') as HTMLImageElement; if (img) img.style.transform = 'scale(1)' }}>
+                  <div style={{ aspectRatio: '4/3', overflow: 'hidden', position: 'relative' }}>
+                    <Image src={w.image} alt={w.title} fill style={{ objectFit: 'cover', transition: 'transform 0.5s ease' }} sizes="(max-width:768px) 100vw, 50vw" />
+                    <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.35)' }} />
+                  </div>
+                  <div style={{ padding: '1.5rem' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <div>
+                        <p style={{ fontWeight: 800, fontSize: '0.95rem', letterSpacing: '-0.01em' }}>{w.title}</p>
+                        <p style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.4)', marginTop: '0.2rem' }}>{w.subtitle}</p>
+                      </div>
+                      <span style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.25)' }}>{w.year}</span>
+                    </div>
+                  </div>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════ PROCESSO ════════════════════ */}
+      <section style={{ padding: '6rem 0', borderTop: '1px solid rgba(255,255,255,0.06)', background: 'linear-gradient(180deg, #000 0%, #0a0a0a 100%)' }}>
+        <div className="container">
+          <FadeIn style={{ marginBottom: '4rem' }}>
+            <span className="section-label">Como Trabalhamos</span>
+            <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, letterSpacing: '-0.04em' }}>
+              Processo<br /><span style={{ color: 'rgba(255,255,255,0.35)' }}>Passo a Passo</span>
+            </h2>
+          </FadeIn>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '0', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+            {steps.map((s, i) => (
+              <FadeIn key={i} delay={i * 80} style={{ padding: '2.5rem 2rem', borderRight: '1px solid rgba(255,255,255,0.08)' }}>
+                <span style={{ fontSize: '2.5rem', fontWeight: 800, letterSpacing: '-0.06em', color: 'rgba(255,255,255,0.08)', display: 'block', marginBottom: '1.25rem' }}>{s.n}</span>
+                <h3 style={{ fontWeight: 700, fontSize: '1rem', marginBottom: '0.75rem' }}>{s.title}</h3>
+                <p style={{ fontSize: '0.875rem', color: 'rgba(255,255,255,0.4)', lineHeight: 1.6 }}>{s.desc}</p>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════ DEPOIMENTOS ═════════════════ */}
+      <section style={{ padding: '6rem 0', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+        <div className="container">
+          <FadeIn style={{ marginBottom: '4rem' }}>
+            <span className="section-label">Depoimentos</span>
+            <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, letterSpacing: '-0.04em' }}>
+              O Que Nossos<br /><span style={{ color: 'rgba(255,255,255,0.35)' }}>Clientes Dizem</span>
+            </h2>
+          </FadeIn>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1px', background: 'rgba(255,255,255,0.06)' }}>
+            {testimonials.map((t, i) => (
+              <FadeIn key={i} delay={i * 80}>
+                <div style={{ background: '#000', padding: '2.5rem 2rem' }}>
+                  <p style={{ fontSize: '0.95rem', color: 'rgba(255,255,255,0.7)', lineHeight: 1.75, marginBottom: '2rem', fontStyle: 'italic' }}>
+                    &ldquo;{t.quote}&rdquo;
+                  </p>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                    <CheckCircle size={16} color="rgba(255,255,255,0.3)" />
+                    <div>
+                      <p style={{ fontWeight: 700, fontSize: '0.875rem' }}>{t.author}</p>
+                      <p style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.35)', marginTop: '0.15rem' }}>{t.role}</p>
+                    </div>
+                  </div>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════ CTA FINAL ═══════════════════ */}
+      <section style={{ padding: '6rem 0', borderTop: '1px solid rgba(255,255,255,0.06)', background: 'linear-gradient(180deg, #000 0%, #080808 100%)' }}>
+        <div className="container">
+          <FadeIn>
+            <div style={{ maxWidth: 700, margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', fontWeight: 800, letterSpacing: '-0.05em', lineHeight: 1.05, marginBottom: '1.5rem' }}>
+                PRONTO PARA<br /><span style={{ color: 'rgba(255,255,255,0.35)' }}>ESCALAR?</span>
+              </h2>
+              <p style={{ fontSize: '1rem', color: 'rgba(255,255,255,0.45)', lineHeight: 1.7, marginBottom: '2.5rem', maxWidth: 480, margin: '0 auto 2.5rem' }}>
+                Agende uma análise gratuita e montamos um plano de ação para sua empresa dominar os buscadores e as IAs.
+              </p>
+              <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+                <Link href="/simulador" style={{ padding: '1rem 2.5rem', background: '#fff', color: '#000', fontWeight: 700, fontSize: '0.85rem', letterSpacing: '0.08em', textTransform: 'uppercase', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', transition: 'opacity 0.2s' }}
+                  onMouseEnter={e => (e.currentTarget.style.opacity = '0.85')}
+                  onMouseLeave={e => (e.currentTarget.style.opacity = '1')}>
+                  Iniciar Diagnóstico <ArrowRight size={15} />
+                </Link>
+                <a href="https://wa.me/5511922908507" target="_blank" rel="noopener noreferrer"
+                  style={{ padding: '1rem 2.5rem', border: '1px solid rgba(255,255,255,0.25)', color: '#fff', fontWeight: 600, fontSize: '0.85rem', letterSpacing: '0.04em', textTransform: 'uppercase' }}>
+                  WhatsApp
+                </a>
+              </div>
+            </div>
+          </FadeIn>
         </div>
       </section>
     </>

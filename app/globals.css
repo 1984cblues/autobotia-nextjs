@@ -1,326 +1,100 @@
 @import "tailwindcss";
-@import "tw-animate-css";
-@import "fumadocs-ui/css/neutral.css";
-@import "fumadocs-ui/css/preset.css";
 
-@custom-variant dark (&:is(.dark *));
+@layer base {
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 3%;
+    --card-foreground: 0 0% 100%;
+    --primary: 0 0% 100%;
+    --primary-foreground: 0 0% 0%;
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 60%;
+    --accent: 0 0% 20%;
+    --border: 0 0% 18%;
+    --radius: 0rem;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
+    /* Legacy tokens (blog/city pages) */
+    --color-back: #000000;
+    --color-back-light: #111111;
+    --color-text: #ffffff;
+    --color-text-muted: #999999;
+    --color-accent: #ffffff;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.5rem;
+    --space-6: 2rem;
+    --space-7: 3rem;
+    --space-8: 4rem;
+  }
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    border-color: hsl(var(--border));
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
   
-  --radius-lg: var(--radius);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-sm: calc(var(--radius) - 4px);
+  a { color: inherit; text-decoration: none; }
 }
 
-:root {
-  /* Blog Theme Variables (Shadcn-like) */
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --radius: 0.625rem;
-
-  /* Brand Colors (Autobotia Original) */
-  /* Brand Colors */
-  --color-primary: #1E40AF;
-  --color-primary-hover: #1e3a8a;
-  --color-primary-glow: rgba(30, 64, 175, 0.2);
-  --color-accent: #06B6D4;
-  --color-accent-glow: rgba(6, 182, 212, 0.15);
-  --color-success: #25D366; /* WhatsApp green */
-  --color-success-glow: rgba(37, 211, 102, 0.2);
-
-  /* Light Theme Surfaces */
-  --color-bg: #F3F4F6;
-  --color-surface: #FFFFFF;
-  --color-surface-2: #F9FAFB;
-  --color-border: #E5E7EB;
-  --color-border-hover: rgba(6, 182, 212, 0.35);
-
-  /* Typography */
-  --color-text: #1F2937;
-  --color-text-muted: #6B7280;
-  --color-text-subtle: #9CA3AF;
-
-  /* Layout */
-  --header-height: 80px;
-
-  /* Spacing Scale (8px base) */
-  --space-1: 0.5rem;
-  --space-2: 1rem;
-  --space-3: 1.5rem;
-  --space-4: 2rem;
-  --space-5: 3rem;
-  --space-6: 4rem;
-  --space-7: 6rem;
-  --space-8: 8rem;
-  --space-9: 10rem;
-  --space-10: 12rem;
-
-  /* Border Radius */
-  --radius-sm: 0.5rem;
-  --radius-md: 1rem;
-  --radius-lg: 1.5rem;
-  --radius-full: 9999px;
-
-  /* Typography */
-  --font-heading: 'Inter', system-ui, sans-serif;
-  --font-body: 'Inter', system-ui, sans-serif;
-
-  /* Transitions */
-  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-normal: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-
-  /* Shadows */
-  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.07), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 12px -2px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
-  --shadow-lg: 0 12px 24px -4px rgba(0, 0, 0, 0.1), 0 4px 8px -2px rgba(0, 0, 0, 0.05);
-  --shadow-glow: 0 0 24px var(--color-primary-glow);
-  --shadow-glow-cyan: 0 0 24px var(--color-accent-glow);
+/* ── Custom Cursor ─────────────────────────────────── */
+@media (min-width: 768px) {
+  * { cursor: none !important; }
 }
 
-/* ==== CSS Reset ==== */
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+/* ── Scrollbar ─────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #000; }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 0; }
+::-webkit-scrollbar-thumb:hover { background: #555; }
 
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  background-color: var(--color-bg);
-  /* Added Mesh Gradient Background with base */
-  background-image: 
-    radial-gradient(at 0% 0%, rgba(30, 64, 175, 0.08) 0px, transparent 50%),
-    radial-gradient(at 100% 0%, rgba(6, 182, 212, 0.08) 0px, transparent 50%),
-    /* Base64 Noise SVG */
-    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
-  color: var(--color-text);
-  font-family: var(--font-body);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
-}
-
-/* ==== Typography ==== */
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading);
-  color: var(--color-text);
-  line-height: 1.15;
-}
-
-h1 { font-size: clamp(2.5rem, 8vw, 5.5rem); font-weight: 900; letter-spacing: -0.03em; }
-h2 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: var(--space-4); }
-h3 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; }
-h4 { font-size: clamp(1.25rem, 2vw, 1.5rem); font-weight: 600; }
-
-a {
-  color: inherit;
-  text-decoration: none;
-  transition: color var(--transition-fast);
-}
-
-p { margin-bottom: var(--space-3); line-height: 1.7; }
-
-img, video { max-width: 100%; display: block; }
-
-/* ==== Layout Utilities ==== */
+/* ── Container ─────────────────────────────────────── */
 .container {
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 var(--space-3);
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
-.text-center { text-align: center; }
-.mx-auto { margin-left: auto; margin-right: auto; display: block; }
-
-section {
-  padding: var(--space-7) 0;
-}
-
-/* ==== Design Tokens — Utilities ==== */
-.text-gradient {
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
+/* ── Section label ─────────────────────────────────── */
 .section-label {
   display: inline-block;
-  padding: 0.3rem 0.85rem;
-  background: var(--color-primary-glow);
-  color: var(--color-primary);
-  border-radius: var(--radius-full);
-  font-size: 0.8125rem;
-  font-weight: 700;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-bottom: var(--space-3);
-  border: 1px solid rgba(30, 64, 175, 0.15);
+  color: hsl(var(--muted-foreground));
+  border: 1px solid hsl(var(--border));
+  padding: 0.35rem 0.85rem;
+  margin-bottom: 1.5rem;
 }
 
-.section-subtitle {
-  font-size: 1.125rem;
-  color: var(--color-text-muted);
-  max-width: 600px;
-  line-height: 1.7;
-}
-
-/* Glassmorphism Base Utility */
-.glassCard {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: var(--radius-lg);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
-}
-
-.dark .glassCard {
-  background: rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-/* ==== Skip Link (Accessbility) ==== */
-.skip-link {
-  position: absolute;
-  top: -40px;
-  left: 0;
-  background: var(--color-primary);
-  color: white;
-  padding: 8px;
-  z-index: 100;
-  transition: top 0.2s;
-}
-.skip-link:focus {
-  top: 0;
-}
-
-/* ============================================
-   SCROLL REVEAL ANIMATIONS SYSTEM
-   Uses SectionWrapper component + IntersectObserver
-   ============================================ */
-[data-animate] {
-  opacity: 0;
-  transition:
-    opacity var(--transition-slow),
-    transform var(--transition-slow);
-}
-
-[data-animate="fade-up"]    { transform: translateY(36px); }
-[data-animate="fade-down"]  { transform: translateY(-36px); }
-[data-animate="fade-left"]  { transform: translateX(-36px); }
-[data-animate="fade-right"] { transform: translateX(36px); }
-[data-animate="scale"]      { transform: scale(0.92); }
-
-/* Stagger delays — driven by data-delay attribute set in px */
-[data-delay="100"] { transition-delay: 0.1s; }
-[data-delay="200"] { transition-delay: 0.2s; }
-[data-delay="300"] { transition-delay: 0.3s; }
-[data-delay="400"] { transition-delay: 0.4s; }
-[data-delay="500"] { transition-delay: 0.5s; }
-
-[data-animate].is-visible {
-  opacity: 1;
-  transform: none;
-}
-
-/* Accessibility: respect reduced motion preference */
-@media (prefers-reduced-motion: reduce) {
-  [data-animate],
-  [data-animate].is-visible {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-  html { scroll-behavior: auto; }
-}
-
-/* ============================================
-   GLOBAL COMPONENT PATTERNS
-   ============================================ */
-
-/* WhatsApp Float Button */
-.whatsapp-float {
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  z-index: 99;
-  width: 58px;
-  height: 58px;
-  border-radius: 50%;
-  background: #25D366;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
-  animation: waPulse 2.5s ease-in-out infinite;
-}
-
-.whatsapp-float:hover {
-  transform: scale(1.12);
-  box-shadow: 0 6px 28px rgba(37, 211, 102, 0.55);
-  animation: none;
-}
-
-.whatsapp-float svg { width: 28px; height: 28px; }
-
-@keyframes waPulse {
-  0%, 100% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); }
-  50%       { box-shadow: 0 4px 30px rgba(37, 211, 102, 0.7), 0 0 0 8px rgba(37, 211, 102, 0.1); }
-}
-
-/* ==== Responsive ==== */
-@media (max-width: 768px) {
-  h1 { font-size: 2.25rem; }
-  h2 { font-size: 1.875rem; }
-  section { padding: var(--space-5) 0; }
-  .container { padding: 0 var(--space-2); }
-
-  .whatsapp-float {
-    bottom: 1.25rem;
-    right: 1.25rem;
-    width: 52px;
-    height: 52px;
-  }
+/* ── Text highlight ─────────────────────────────────── */
+.text-highlight {
+  color: hsl(var(--muted-foreground));
 }

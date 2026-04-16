@@ -1,28 +1,30 @@
-import { Navbar } from '@/components/layout/Navbar'
-import { Footer } from '@/components/layout/Footer'
-import { Button } from '@/components/ui/Button'
+import type { Metadata } from 'next'
+import { ServicePageLayout } from '@/components/layout/ServicePageLayout'
 
-export const metadata = {
-  title: 'AEO (Otimização para Motor de Respostas) | Autobotia',
-  description: 'Coloque sua marca como resposta definitiva para buscas de voz e assistentes de IA (AI Overviews).',
+export const metadata: Metadata = {
+  title: 'AEO — Answer Engine Optimization: Domine os Featured Snippets | Autobotia',
+  description: 'Answer Engine Optimization. Apareça nas respostas diretas do Google, Alexa e assistentes de voz. Seu negócio como a resposta definitiva.',
+  alternates: { canonical: 'https://www.autobotia.com.br/servicos/aeo' },
 }
 
-export default function AEOPage() {
+const features = [
+  { title: 'Featured Snippets', desc: 'Otimizamos seu conteúdo para aparecer na posição zero do Google — acima do primeiro resultado orgânico.' },
+  { title: 'Voice Search Optimization', desc: 'Estrutura de conteúdo em linguagem natural para ser a resposta dos assistentes de voz (Alexa, Google, Siri).' },
+  { title: 'FAQ Schema', desc: 'Marcação JSON-LD que cria a seção de perguntas e respostas diretamente nos resultados de busca.' },
+  { title: 'People Also Ask', desc: 'Mapeamos as perguntas relacionadas do seu nicho e criamos conteúdo que domina esse espaço.' },
+  { title: 'Knowledge Panel', desc: 'Estratégias para construir o Knowledge Panel da sua marca no Google e aparecer como entidade.' },
+  { title: 'Relatório de Position Zero', desc: 'Monitoramento mensal de quantos featured snippets sua empresa conquistou e quais palavras-chave dominam.' },
+]
+
+export default function AeoPage() {
   return (
-    <>
-      <Navbar />
-      <main style={{ paddingTop: 'var(--header-height)' }}>
-        <section className="container" style={{ padding: 'var(--space-7) var(--space-2)', textAlign: 'center', minHeight: '60vh' }}>
-          <span className="section-label">AEO - Answer Engine Optimization</span>
-          <h1 style={{ fontSize: '3rem', marginBottom: 'var(--space-4)' }}>Seja a Resposta Definitiva</h1>
-          <p style={{ maxWidth: 800, margin: '0 auto var(--space-6)', color: 'var(--color-text-muted)' }}>
-            O modo de buscar mudou. Prepararemos seu site com blocos de dados estruturados e semânticos (Schemas e FAQ Pages)
-            para que o Google e a Alexa entreguem o *seu* conteúdo quando o usuário faz uma pergunta direta.
-          </p>
-          <Button variant="primary" href="/simulador">Analisar Estruturação</Button>
-        </section>
-      </main>
-      <Footer />
-    </>
+    <ServicePageLayout
+      label="Pilar 5 — AEO"
+      title="SEJA A"
+      titleMuted="RESPOSTA DEFINITIVA"
+      description="Quando alguém pergunta ao Google ou a um assistente de voz, queremos que a resposta seja você. O Answer Engine Optimization faz exatamente isso."
+      features={features}
+      iconName="Search"
+    />
   )
 }

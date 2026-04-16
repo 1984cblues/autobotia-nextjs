@@ -1,80 +1,89 @@
-import React from 'react'
+'use client'
+
 import Link from 'next/link'
-import styles from './Footer.module.css'
+
+const cols = [
+  {
+    title: 'Serviços',
+    links: [
+      { label: 'Web Design & LP', href: '/servicos/web-design' },
+      { label: 'SEO Local', href: '/servicos/seo-local' },
+      { label: 'SEO Content', href: '/servicos/seo' },
+      { label: 'GEO — Visibilidade IA', href: '/servicos/geo' },
+      { label: 'AEO — Answer Engine', href: '/servicos/aeo' },
+    ],
+  },
+  {
+    title: 'Empresa',
+    links: [
+      { label: 'Portfólio', href: '/portfolio' },
+      { label: 'Blog', href: '/blog' },
+      { label: 'Estudos de Caso', href: '/estudos-de-caso' },
+      { label: 'Simulador', href: '/simulador' },
+    ],
+  },
+]
 
 export function Footer() {
   return (
-    <footer className={styles.footer}>
+    <footer style={{ borderTop: '1px solid rgba(255,255,255,0.08)', background: '#000', padding: '4rem 0 2.5rem' }}>
       <div className="container">
-        <div className={styles.grid}>
-          {/* Logo & Desc */}
-          <div className={styles.logoArea}>
-            <Link href="/" className={styles.logo}>
-              Autobot<span>ia</span>
-            </Link>
-            <p className={styles.desc}>
-              Criamos soluções de alto impacto em SEO, visibilidade em IA (GEO) e design focado  
-              em conversão. Faça sua marca ser encontrada e escolhida.
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '3rem', marginBottom: '3rem' }}>
+          {/* Brand */}
+          <div>
+            <p style={{ fontWeight: 800, fontSize: '1.15rem', letterSpacing: '-0.04em', marginBottom: '1rem' }}>AUTOBOTIA</p>
+            <p style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.45)', lineHeight: 1.7, maxWidth: 240 }}>
+              Sites profissionais e estratégias de visibilidade para empresas que querem crescer.
             </p>
+            <a
+              href="https://wa.me/5511922908507"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: 'inline-block',
+                marginTop: '1.5rem',
+                fontSize: '0.75rem',
+                fontWeight: 700,
+                letterSpacing: '0.1em',
+                textTransform: 'uppercase',
+                padding: '0.6rem 1.25rem',
+                border: '1px solid rgba(255,255,255,0.25)',
+                color: '#fff',
+                transition: 'all 0.2s',
+              }}
+            >
+              WhatsApp →
+            </a>
           </div>
 
-          {/* Links - Services */}
-          <div>
-            <h3 className={styles.title}>Serviços</h3>
-            <div className={styles.links}>
-              <Link href="/servicos/seo" className={styles.link}>SEO Especializado</Link>
-              <Link href="/servicos/seo-local" className={styles.link}>SEO Local</Link>
-              <Link href="/servicos/geo" className={styles.link}>GEO (Conquiste as IAs)</Link>
-              <Link href="/servicos/aeo" className={styles.link}>AEO (Answer Engine)</Link>
-              <Link href="/servicos/web-design" className={styles.link}>Web Design</Link>
+          {/* Link cols */}
+          {cols.map((col) => (
+            <div key={col.title}>
+              <p style={{ fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginBottom: '1.25rem' }}>
+                {col.title}
+              </p>
+              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                {col.links.map((l) => (
+                  <li key={l.href}>
+                    <Link href={l.href} style={{ fontSize: '0.875rem', color: 'rgba(255,255,255,0.55)', transition: 'color 0.2s' }}
+                      onMouseEnter={e => (e.currentTarget.style.color = '#fff')}
+                      onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.55)')}>
+                      {l.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
-          </div>
-
-          {/* Links - Agency */}
-          <div>
-            <h3 className={styles.title}>Agência</h3>
-            <div className={styles.links}>
-              <Link href="/portfolio" className={styles.link}>Portfólio</Link>
-              <Link href="/estudos-de-caso" className={styles.link}>Estudos de Caso</Link>
-              <Link href="/simulador" className={styles.link}>Simulador de Orçamento</Link>
-              <Link href="/politica-privacidade" className={styles.link}>Política de Privacidade</Link>
-            </div>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h3 className={styles.title}>Contato</h3>
-            <div className={styles.contact}>
-              <span>WhatsApp: <a href="https://wa.me/5511922908507" className={styles.link}>(11) 92290-8507</a></span>
-              <span>contato@autobotia.com.br</span>
-              
-              <strong>Seg a Sex, 8h às 18h</strong>
-              <strong>Atendimento em todo o Brasil</strong>
-            </div>
-          </div>
+          ))}
         </div>
 
-        {/* Bottom */}
-        <div className={styles.bottom}>
-          <span>© {new Date().getFullYear()} Autobotia. Todos os direitos reservados.</span>
-          <div className={styles.socials}>
-            {/* Instagram */}
-            <a href="https://instagram.com/autobotia" target="_blank" rel="noreferrer" className={styles.socialLink} aria-label="Instagram">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-              </svg>
-            </a>
-            {/* LinkedIn */}
-            <a href="https://linkedin.com/company/autobotia" target="_blank" rel="noreferrer" className={styles.socialLink} aria-label="LinkedIn">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                <rect x="2" y="9" width="4" height="12"></rect>
-                <circle cx="4" cy="4" r="2"></circle>
-              </svg>
-            </a>
-          </div>
+        <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: '1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
+          <p style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.25)' }}>
+            © {new Date().getFullYear()} Autobotia. Todos os direitos reservados.
+          </p>
+          <p style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.25)' }}>
+            contato@autobotia.com.br
+          </p>
         </div>
       </div>
     </footer>
