@@ -1,0 +1,187 @@
+/* Layout Base for Service Pages */
+.pageContainer {
+  min-height: 100vh;
+  background-color: var(--color-bg);
+}
+
+/* Service Hero Section */
+.hero {
+  padding: calc(var(--header-height) + var(--space-8)) var(--space-4) var(--space-7);
+  background: radial-gradient(circle at 10% 20%, rgba(30, 64, 175, 0.05) 0%, transparent 40%);
+  text-align: center;
+}
+
+.heroContent {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: rgba(30, 64, 175, 0.1);
+  color: var(--color-primary);
+  font-size: 0.875rem;
+  font-weight: 700;
+  border-radius: var(--radius-full);
+  margin-bottom: var(--space-4);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.title {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 900;
+  line-height: 1.1;
+  color: var(--color-text);
+  margin-bottom: var(--space-4);
+  letter-spacing: -0.02em;
+}
+
+.highlight {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.description {
+  font-size: clamp(1.125rem, 2vw, 1.375rem);
+  color: var(--color-text-muted);
+  max-width: 700px;
+  margin: 0 auto var(--space-6);
+  line-height: 1.6;
+}
+
+.ctaGroup {
+  display: flex;
+  gap: var(--space-4);
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .ctaGroup {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .ctaGroup > * {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+}
+
+/* Common Section */
+.section {
+  padding: var(--space-8) var(--space-4);
+  max-width: var(--container-width);
+  margin: 0 auto;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: var(--space-7);
+}
+
+.sectionTitle {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  margin-bottom: var(--space-3);
+  color: var(--color-text);
+}
+
+.sectionDescription {
+  font-size: 1.125rem;
+  color: var(--color-text-muted);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Content Grid / Methodology Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--space-5);
+}
+
+/* Specific Feature Card (Simpler than GlowCard, more focused on reading) */
+.featureCard {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  transition: all var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.featureCard:hover {
+  border-color: var(--color-primary);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+  transform: translateY(-5px);
+}
+
+.iconWrapper {
+  width: 56px;
+  height: 56px;
+  background: rgba(30, 64, 175, 0.05);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-5);
+  color: var(--color-primary);
+}
+
+.featureTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: var(--space-3);
+  color: var(--color-text);
+}
+
+.featureText {
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+/* Up-Sell CTA Banner */
+.upSellBanner {
+  background: linear-gradient(135deg, var(--color-surface) 0%, rgba(30, 64, 175, 0.02) 100%);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6) var(--space-8);
+  margin: var(--space-8) auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+}
+
+.upSellContent {
+  flex: 1 1 400px;
+}
+
+.upSellContent h3 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  margin-bottom: var(--space-2);
+}
+
+.upSellContent p {
+  color: var(--color-text-muted);
+  font-size: 1.125rem;
+}
+
+@media (max-width: 768px) {
+  .upSellBanner {
+    padding: var(--space-5);
+    text-align: center;
+    flex-direction: column;
+  }
+}
