@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Monitor, MapPin, BookOpen, Brain, ArrowRight, CheckCircle } from 'lucide-react'
 import Image from 'next/image'
+import { HeroSection } from '@/components/sections/HeroSection'
 
 /* ── Fade-in on scroll ─────────────────────────────── */
 function FadeIn({ children, delay = 0, className = '', style = {} }: {
@@ -53,96 +54,11 @@ const steps = [
 ]
 
 export function HomeClient() {
-  const shapeRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const el = shapeRef.current; if (!el) return
-    const move = (e: MouseEvent) => {
-      const { innerWidth: W, innerHeight: H } = window
-      const x = (e.clientX / W - 0.5) * 18
-      const y = (e.clientY / H - 0.5) * 18
-      el.style.transform = `perspective(1000px) rotateY(${x}deg) rotateX(${-y}deg)`
-    }
-    window.addEventListener('mousemove', move)
-    return () => window.removeEventListener('mousemove', move)
-  }, [])
 
   return (
     <>
       {/* ═══════════════════════ HERO ═══════════════════════ */}
-      <section style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', padding: '7rem 0 5rem', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 60% 50%, hsl(var(--foreground) / 0.05) 0%, hsl(var(--background)) 100%)', zIndex: 0 }} />
-        <div className="container" style={{ position: 'relative', zIndex: 1, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center' }}>
-          {/* Copy */}
-          <div>
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-              <span className="section-label">Arquitetura de Conversão Premium</span>
-            </motion.div>
-            <motion.h1
-              initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.15 }}
-              style={{ fontSize: 'clamp(2.8rem, 5.5vw, 5rem)', fontWeight: 800, letterSpacing: '-0.04em', lineHeight: 1.05, marginBottom: '1.5rem', color: 'hsl(var(--foreground))' }}
-            >
-              PARE DE<br />
-              <span style={{ color: 'hsl(var(--foreground) / 0.4)' }}>TER UM<br />PANFLETO.</span>
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.3 }}
-              style={{ fontSize: '1.05rem', color: 'hsl(var(--muted-foreground))', maxWidth: 440, lineHeight: 1.7, marginBottom: '2.5rem' }}
-            >
-              Desenvolvemos sites profissionais e estratégias de visibilidade que fazem sua empresa ser encontrada no Google e no ChatGPT.
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.45 }}
-              style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}
-            >
-              <Link href="/simulador" style={{ padding: '0.9rem 2rem', background: 'hsl(var(--foreground))', color: 'hsl(var(--background))', fontWeight: 700, fontSize: '0.85rem', letterSpacing: '0.06em', textTransform: 'uppercase', transition: 'opacity 0.2s', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}
-                onMouseEnter={e => (e.currentTarget.style.opacity = '0.85')}
-                onMouseLeave={e => (e.currentTarget.style.opacity = '1')}>
-                Análise Gratuita <ArrowRight size={15} />
-              </Link>
-              <a href="#servicos" style={{ padding: '0.9rem 2rem', border: '1px solid hsl(var(--border))', color: 'hsl(var(--foreground))', fontWeight: 600, fontSize: '0.85rem', letterSpacing: '0.04em', textTransform: 'uppercase' }}>
-                Ver Serviços
-              </a>
-            </motion.div>
-          </div>
-
-          {/* Animated shape */}
-          <motion.div
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.7, delay: 0.6 }}
-            ref={shapeRef}
-            style={{ transition: 'transform 0.12s ease-out', transformStyle: 'preserve-3d' }}
-            className="hide-mobile"
-          >
-            <div style={{ position: 'relative' }}>
-              <div style={{ position: 'absolute', bottom: -20, right: -20, width: '65%', height: '65%', border: '1px solid hsl(var(--border) / 0.1)', background: 'hsl(var(--background))', zIndex: -1 }} />
-              <div style={{ aspectRatio: '1/1', border: '1px solid hsl(var(--border) / 0.2)', background: 'linear-gradient(135deg, hsl(var(--background) / 1), hsl(var(--background) / 0.9))', position: 'relative', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <div style={{ width: '70%', height: '70%', position: 'relative' }}>
-                  {[
-                    { top:0, left:0, width:'100%', height:2, transform:'scaleX(0)', animation:'growX 0.5s ease 1.2s forwards' },
-                    { bottom:0, right:0, width:'100%', height:2, transform:'scaleX(0)', animation:'growXR 0.5s ease 1.4s forwards', transformOrigin:'right' },
-                    { top:0, right:0, width:2, height:'100%', transform:'scaleY(0)', animation:'growY 0.5s ease 1.6s forwards' },
-                    { bottom:0, left:0, width:2, height:'100%', transform:'scaleY(0)', animation:'growYB 0.5s ease 1.8s forwards', transformOrigin:'bottom' },
-                  ].map((s, i) => (
-                    <div key={i} style={{ position:'absolute', background:'hsl(var(--foreground))', ...s } as React.CSSProperties} />
-                  ))}
-                  <div style={{ position:'absolute', top:'25%', left:'25%', width:'50%', height:'50%', border:'1px solid hsl(var(--border) / 0.15)', display:'flex', alignItems:'center', justifyContent:'center' }}>
-                    <div style={{ width:'60%', height:'60%', background:'hsl(var(--muted) / 0.3)', display:'flex', alignItems:'center', justifyContent:'center' }}>
-                      <div style={{ width:'45%', height:'45%', background:'hsl(var(--foreground))' }} />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-        <style>{`
-          @keyframes growX  { to { transform: scaleX(1); } }
-          @keyframes growXR { to { transform: scaleX(1); } }
-          @keyframes growY  { to { transform: scaleY(1); } }
-          @keyframes growYB { to { transform: scaleY(1); } }
-          @media(max-width:767px){.hide-mobile{display:none!important}}
-        `}</style>
-      </section>
+      <HeroSection />
 
       {/* ═══════════════════════ SERVIÇOS ═══════════════════ */}
       <section id="servicos" style={{ padding: '6rem 0', borderTop: '1px solid hsl(var(--border) / 0.1)' }}>
