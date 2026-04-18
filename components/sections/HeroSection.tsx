@@ -1,133 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Globe3D, GlobeMarker } from "@/components/ui/3d-globe";
+import { VisibilityMapHero } from "@/components/ui/visibility-map-hero";
 import { TrendingUp, Award, Zap } from "lucide-react";
 
-// Marcadores representando cidades com forte presença digital/SEO
-const visibilityMarkers: GlobeMarker[] = [
-  {
-    lat: -23.5505,
-    lng: -46.6333,
-    src: "https://assets.aceternity.com/avatars/1.webp",
-    label: "São Paulo",
-  },
-  {
-    lat: -22.9068,
-    lng: -43.1729,
-    src: "https://assets.aceternity.com/avatars/2.webp",
-    label: "Rio de Janeiro",
-  },
-  {
-    lat: -15.7801,
-    lng: -47.9292,
-    src: "https://assets.aceternity.com/avatars/3.webp",
-    label: "Brasília",
-  },
-  {
-    lat: -12.9714,
-    lng: -38.5014,
-    src: "https://assets.aceternity.com/avatars/4.webp",
-    label: "Salvador",
-  },
-  {
-    lat: -3.7172,
-    lng: -38.5434,
-    src: "https://assets.aceternity.com/avatars/5.webp",
-    label: "Fortaleza",
-  },
-  {
-    lat: -30.0346,
-    lng: -51.2177,
-    src: "https://assets.aceternity.com/avatars/6.webp",
-    label: "Porto Alegre",
-  },
-  {
-    lat: -19.9191,
-    lng: -43.9386,
-    src: "https://assets.aceternity.com/avatars/7.webp",
-    label: "Belo Horizonte",
-  },
-  {
-    lat: -8.0476,
-    lng: -34.877,
-    src: "https://assets.aceternity.com/avatars/8.webp",
-    label: "Recife",
-  },
-  {
-    lat: -25.4284,
-    lng: -49.2733,
-    src: "https://assets.aceternity.com/avatars/9.webp",
-    label: "Curitiba",
-  },
-  {
-    lat: -1.4558,
-    lng: -48.5039,
-    src: "https://assets.aceternity.com/avatars/10.webp",
-    label: "Belém",
-  },
-  {
-    lat: -2.5307,
-    lng: -44.3068,
-    src: "https://assets.aceternity.com/avatars/11.webp",
-    label: "São Luís",
-  },
-  {
-    lat: -20.3155,
-    lng: -40.3128,
-    src: "https://assets.aceternity.com/avatars/12.webp",
-    label: "Vitória",
-  },
-];
-
-// Badges de visibilidade flutuantes ao redor do globo
-const floatingBadges = [
-  {
-    id: 1,
-    icon: "📍",
-    label: "Google Maps",
-    sublabel: "#1 na região",
-    top: "12%",
-    left: "2%",
-    delay: 0,
-  },
-  {
-    id: 2,
-    icon: "🔍",
-    label: "Google Search",
-    sublabel: "Página 1 garantida",
-    top: "38%",
-    left: "-4%",
-    delay: 0.4,
-  },
-  {
-    id: 3,
-    icon: "⭐",
-    label: "Avaliações",
-    sublabel: "4.9 · 200+ reviews",
-    top: "66%",
-    left: "4%",
-    delay: 0.8,
-  },
-  {
-    id: 4,
-    icon: "📈",
-    label: "Tráfego Orgânico",
-    sublabel: "+340% em 90 dias",
-    top: "14%",
-    right: "0%",
-    delay: 0.2,
-  },
-  {
-    id: 5,
-    icon: "🤖",
-    label: "IA & ChatGPT",
-    sublabel: "Citado como referência",
-    top: "70%",
-    right: "0%",
-    delay: 0.6,
-  },
-];
 
 const fadeUp = {
   hidden: { opacity: 0, y: 32 },
@@ -137,64 +13,6 @@ const fadeUp = {
     transition: { duration: 0.6, ease: "easeOut", delay },
   }),
 };
-
-const fadeIn = {
-  hidden: { opacity: 0, scale: 0.9 },
-  visible: (delay: number = 0) => ({
-    opacity: 1,
-    scale: 1,
-    transition: { duration: 0.5, ease: "easeOut", delay },
-  }),
-};
-
-/**
- * Novo Elemento: SEOResultsCard
- * Focado no público leigo para mostrar resultados tangíveis.
- */
-function SEOResultsCard() {
-  return (
-    <motion.div
-      initial={{ opacity: 0, x: 20 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ delay: 1.2, duration: 0.8 }}
-      className="absolute bottom-20 -right-4 z-30 flex flex-col gap-4 rounded-2xl border border-white/20 bg-white/10 p-5 shadow-2xl backdrop-blur-md dark:bg-black/20 md:bottom-32 md:right-0 md:w-[280px]"
-    >
-      <div className="flex items-center gap-3">
-        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-500">
-          <TrendingUp className="h-5 w-5" />
-        </div>
-        <div>
-          <p className="text-[10px] font-bold uppercase tracking-widest text-neutral-500">Analytics Live</p>
-          <p className="text-sm font-black text-neutral-900 dark:text-white">Sucesso em SEO</p>
-        </div>
-      </div>
-
-      <div className="space-y-3">
-        {[
-          { icon: Award, label: "Top 3 no Google", value: "92% dps sites", color: "text-blue-500" },
-          { icon: Zap, label: "Indexação IAs", value: "Instantânea", color: "text-amber-500" },
-        ].map((item, idx) => (
-          <div key={idx} className="flex items-center justify-between rounded-lg bg-white/40 p-2 dark:bg-black/10">
-            <div className="flex items-center gap-2">
-              <item.icon className={`h-3.5 w-3.5 ${item.color}`} />
-              <span className="text-[11px] font-medium text-neutral-600 dark:text-neutral-400">{item.label}</span>
-            </div>
-            <span className="text-[11px] font-bold text-neutral-900 dark:text-white">{item.value}</span>
-          </div>
-        ))}
-      </div>
-
-      <div className="mt-2 flex items-center gap-2">
-        <div className="flex -space-x-2">
-          {[1, 2, 3].map((i) => (
-            <div key={i} className="h-6 w-6 rounded-full border-2 border-white bg-neutral-200 dark:border-neutral-900" />
-          ))}
-        </div>
-        <p className="text-[10px] font-medium text-neutral-400">+12 novos leads hoje</p>
-      </div>
-    </motion.div>
-  );
-}
 
 export function HeroSection() {
   return (
@@ -305,78 +123,31 @@ export function HeroSection() {
           </motion.div>
         </div>
 
-        {/* ── Coluna Direita: Globo + Badges ── */}
-        <div className="relative flex w-full items-center justify-center md:w-[52%]">
-          {/* Container do globo com badges ao redor */}
-          <div className="relative h-[500px] w-full max-w-[620px] md:h-[620px]">
-            {/* Badges flutuantes */}
-            {floatingBadges.map((badge) => (
-              <motion.div
-                key={badge.id}
-                custom={badge.delay}
-                variants={fadeIn}
-                initial="hidden"
-                animate="visible"
-                className="absolute z-20 flex min-w-[148px] items-center gap-2.5 rounded-xl border border-neutral-100 bg-white px-3 py-2.5 shadow-[0_4px_24px_rgba(0,0,0,0.08)] dark:border-white/10 dark:bg-black/40 dark:backdrop-blur-md"
-                style={{
-                  top: badge.top,
-                  left: "left" in badge ? badge.left : undefined,
-                  right: "right" in badge ? badge.right : undefined,
-                }}
-                whileHover={{ scale: 1.04 }}
-              >
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-neutral-50 text-base dark:bg-white/10">
-                  {badge.icon}
-                </span>
-                <div>
-                  <p className="text-[11px] font-bold leading-tight text-neutral-900 dark:text-white">
-                    {badge.label}
-                  </p>
-                  <p className="text-[10px] leading-tight text-neutral-500 dark:text-neutral-400">
-                    {badge.sublabel}
-                  </p>
-                </div>
-                {/* Indicador verde "ao vivo" */}
-                <span className="absolute right-2.5 top-2.5 h-1.5 w-1.5 rounded-full bg-emerald-500">
-                  <span className="absolute inset-0 animate-ping rounded-full bg-emerald-400 opacity-75" />
-                </span>
-              </motion.div>
-            ))}
+        {/* ── Coluna Direita: Mapa de Visibilidade ── */}
+        <div className="relative flex w-full items-center justify-center md:w-[54%]">
+          <div className="relative h-[550px] w-full max-w-[620px] md:h-[650px]">
+            {/* Halo de brilho atrás do mapa */}
+            <div className="absolute left-1/2 top-1/2 h-[450px] w-[450px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-500/5 blur-3xl dark:bg-blue-500/10" />
 
-            {/* Novo Elemento: Card de Resultados SEO */}
-            <SEOResultsCard />
-
-            {/* Halo de brilho atrás do globo */}
-            <div className="absolute left-1/2 top-1/2 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-500/5 blur-3xl dark:bg-blue-500/10" />
-
-            {/* Globo */}
+            {/* Mapa de Visibilidade */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.85 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.9, ease: "easeOut", delay: 0.2 }}
-              className="h-full w-full"
+              initial={{ opacity: 0, scale: 0.92, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
+              className="relative h-full w-full"
             >
-              <Globe3D
-                className="h-full w-full"
-                markers={visibilityMarkers}
-                config={{
-                  atmosphereColor: "#3b82f6",
-                  atmosphereIntensity: 15,
-                  bumpScale: 4,
-                  autoRotateSpeed: 0.4,
-                }}
-              />
+              <VisibilityMapHero />
             </motion.div>
 
-            {/* Label inferior do globo */}
+            {/* Label inferior do mapa */}
             <motion.div
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.1, duration: 0.5 }}
-              className="absolute -bottom-2 left-1/2 -translate-x-1/2 rounded-full border border-neutral-100 bg-white px-4 py-1.5 shadow-md dark:border-white/10 dark:bg-black/40"
+              transition={{ delay: 1.2, duration: 0.5 }}
+              className="absolute -bottom-4 left-1/2 -translate-x-1/2 rounded-full border border-neutral-100 bg-white/80 px-4 py-1.5 shadow-lg backdrop-blur-sm dark:border-white/10 dark:bg-black/60 md:-bottom-8"
             >
-              <p className="whitespace-nowrap text-[11px] font-semibold uppercase tracking-widest text-neutral-500 dark:text-neutral-400">
-                🌎 Visibilidade em todo o Brasil
+              <p className="whitespace-nowrap text-[10px] font-bold uppercase tracking-[0.15em] text-neutral-500 dark:text-neutral-400">
+                📊 Alcance de Visibilidade em São Paulo
               </p>
             </motion.div>
           </div>
