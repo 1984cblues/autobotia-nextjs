@@ -8,6 +8,8 @@ import { Footer } from '@/components/layout/Footer'
 import { FloatingCursor } from '@/components/ui/FloatingCursor'
 import { NoiseBackground } from '@/components/ui/NoiseBackground'
 
+import { ThemeProvider } from '@/components/blog/theme-provider'
+
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
@@ -88,7 +90,8 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <meta name="theme-color" content="#1E40AF" />
       </head>
-      <body style={{ background: '#000', color: '#fff' }}>
+      <body>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <NoiseBackground />
           <FloatingCursor />
 
@@ -113,7 +116,8 @@ export default function RootLayout({
           <Navbar />
           <main id="main-content">{children}</main>
           <Footer />
-        </body>
+        </ThemeProvider>
+      </body>
     </html>
   )
 }

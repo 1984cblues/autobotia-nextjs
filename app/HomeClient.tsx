@@ -71,7 +71,7 @@ export function HomeClient() {
     <>
       {/* ═══════════════════════ HERO ═══════════════════════ */}
       <section style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', padding: '7rem 0 5rem', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 60% 50%, #1a1a1a 0%, #000 100%)', zIndex: 0 }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 60% 50%, hsl(var(--foreground) / 0.05) 0%, hsl(var(--background)) 100%)', zIndex: 0 }} />
         <div className="container" style={{ position: 'relative', zIndex: 1, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center' }}>
           {/* Copy */}
           <div>
@@ -80,14 +80,14 @@ export function HomeClient() {
             </motion.div>
             <motion.h1
               initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.15 }}
-              style={{ fontSize: 'clamp(2.8rem, 5.5vw, 5rem)', fontWeight: 800, letterSpacing: '-0.04em', lineHeight: 1.05, marginBottom: '1.5rem' }}
+              style={{ fontSize: 'clamp(2.8rem, 5.5vw, 5rem)', fontWeight: 800, letterSpacing: '-0.04em', lineHeight: 1.05, marginBottom: '1.5rem', color: 'hsl(var(--foreground))' }}
             >
               PARE DE<br />
-              <span style={{ color: 'rgba(255,255,255,0.4)' }}>TER UM<br />PANFLETO.</span>
+              <span style={{ color: 'hsl(var(--foreground) / 0.4)' }}>TER UM<br />PANFLETO.</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.3 }}
-              style={{ fontSize: '1.05rem', color: 'rgba(255,255,255,0.5)', maxWidth: 440, lineHeight: 1.7, marginBottom: '2.5rem' }}
+              style={{ fontSize: '1.05rem', color: 'hsl(var(--muted-foreground))', maxWidth: 440, lineHeight: 1.7, marginBottom: '2.5rem' }}
             >
               Desenvolvemos sites profissionais e estratégias de visibilidade que fazem sua empresa ser encontrada no Google e no ChatGPT.
             </motion.p>
@@ -95,12 +95,12 @@ export function HomeClient() {
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.45 }}
               style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}
             >
-              <Link href="/simulador" style={{ padding: '0.9rem 2rem', background: '#fff', color: '#000', fontWeight: 700, fontSize: '0.85rem', letterSpacing: '0.06em', textTransform: 'uppercase', transition: 'opacity 0.2s', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}
+              <Link href="/simulador" style={{ padding: '0.9rem 2rem', background: 'hsl(var(--foreground))', color: 'hsl(var(--background))', fontWeight: 700, fontSize: '0.85rem', letterSpacing: '0.06em', textTransform: 'uppercase', transition: 'opacity 0.2s', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}
                 onMouseEnter={e => (e.currentTarget.style.opacity = '0.85')}
                 onMouseLeave={e => (e.currentTarget.style.opacity = '1')}>
                 Análise Gratuita <ArrowRight size={15} />
               </Link>
-              <a href="#servicos" style={{ padding: '0.9rem 2rem', border: '1px solid rgba(255,255,255,0.25)', color: '#fff', fontWeight: 600, fontSize: '0.85rem', letterSpacing: '0.04em', textTransform: 'uppercase' }}>
+              <a href="#servicos" style={{ padding: '0.9rem 2rem', border: '1px solid hsl(var(--border))', color: 'hsl(var(--foreground))', fontWeight: 600, fontSize: '0.85rem', letterSpacing: '0.04em', textTransform: 'uppercase' }}>
                 Ver Serviços
               </a>
             </motion.div>
@@ -114,8 +114,8 @@ export function HomeClient() {
             className="hide-mobile"
           >
             <div style={{ position: 'relative' }}>
-              <div style={{ position: 'absolute', bottom: -20, right: -20, width: '65%', height: '65%', border: '1px solid rgba(255,255,255,0.1)', background: '#050505', zIndex: -1 }} />
-              <div style={{ aspectRatio: '1/1', border: '1px solid rgba(255,255,255,0.12)', background: 'linear-gradient(135deg, #1c1c1c, #0a0a0a)', position: 'relative', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div style={{ position: 'absolute', bottom: -20, right: -20, width: '65%', height: '65%', border: '1px solid hsl(var(--border) / 0.1)', background: 'hsl(var(--background))', zIndex: -1 }} />
+              <div style={{ aspectRatio: '1/1', border: '1px solid hsl(var(--border) / 0.2)', background: 'linear-gradient(135deg, hsl(var(--background) / 1), hsl(var(--background) / 0.9))', position: 'relative', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <div style={{ width: '70%', height: '70%', position: 'relative' }}>
                   {[
                     { top:0, left:0, width:'100%', height:2, transform:'scaleX(0)', animation:'growX 0.5s ease 1.2s forwards' },
@@ -123,11 +123,11 @@ export function HomeClient() {
                     { top:0, right:0, width:2, height:'100%', transform:'scaleY(0)', animation:'growY 0.5s ease 1.6s forwards' },
                     { bottom:0, left:0, width:2, height:'100%', transform:'scaleY(0)', animation:'growYB 0.5s ease 1.8s forwards', transformOrigin:'bottom' },
                   ].map((s, i) => (
-                    <div key={i} style={{ position:'absolute', background:'#fff', ...s } as React.CSSProperties} />
+                    <div key={i} style={{ position:'absolute', background:'hsl(var(--foreground))', ...s } as React.CSSProperties} />
                   ))}
-                  <div style={{ position:'absolute', top:'25%', left:'25%', width:'50%', height:'50%', border:'1px solid rgba(255,255,255,0.15)', display:'flex', alignItems:'center', justifyContent:'center' }}>
-                    <div style={{ width:'60%', height:'60%', background:'#111', display:'flex', alignItems:'center', justifyContent:'center' }}>
-                      <div style={{ width:'45%', height:'45%', background:'#fff' }} />
+                  <div style={{ position:'absolute', top:'25%', left:'25%', width:'50%', height:'50%', border:'1px solid hsl(var(--border) / 0.15)', display:'flex', alignItems:'center', justifyContent:'center' }}>
+                    <div style={{ width:'60%', height:'60%', background:'hsl(var(--muted) / 0.3)', display:'flex', alignItems:'center', justifyContent:'center' }}>
+                      <div style={{ width:'45%', height:'45%', background:'hsl(var(--foreground))' }} />
                     </div>
                   </div>
                 </div>
@@ -145,27 +145,27 @@ export function HomeClient() {
       </section>
 
       {/* ═══════════════════════ SERVIÇOS ═══════════════════ */}
-      <section id="servicos" style={{ padding: '6rem 0', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+      <section id="servicos" style={{ padding: '6rem 0', borderTop: '1px solid hsl(var(--border) / 0.1)' }}>
         <div className="container">
           <FadeIn style={{ marginBottom: '4rem' }}>
             <span className="section-label">Nossa Abordagem</span>
-            <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3.25rem)', fontWeight: 800, letterSpacing: '-0.04em', maxWidth: 560 }}>
-              A Escada de<br /><span style={{ color: 'rgba(255,255,255,0.35)' }}>Tração Autobotia</span>
+            <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3.25rem)', fontWeight: 800, letterSpacing: '-0.04em', maxWidth: 560, color: 'hsl(var(--foreground))' }}>
+              A Escada de<br /><span style={{ color: 'hsl(var(--foreground) / 0.35)' }}>Tração Autobotia</span>
             </h2>
           </FadeIn>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '0' }}>
             {services.map((s, i) => (
               <FadeIn key={i} delay={i * 80}>
-                <Link href={s.href} style={{ display: 'block', padding: '2.5rem 2rem', borderTop: '1px solid rgba(255,255,255,0.08)', borderRight: i % 2 === 0 ? '1px solid rgba(255,255,255,0.08)' : 'none', transition: 'background 0.3s' }}
-                  onMouseEnter={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.03)')}
+                <Link href={s.href} style={{ display: 'block', padding: '2.5rem 2rem', borderTop: '1px solid hsl(var(--border) / 0.1)', borderRight: i % 2 === 0 ? '1px solid hsl(var(--border) / 0.1)' : 'none', transition: 'background 0.3s' }}
+                  onMouseEnter={e => (e.currentTarget.style.background = 'hsl(var(--foreground) / 0.03)')}
                   onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1.5rem' }}>
-                    <s.icon size={22} color="rgba(255,255,255,0.5)" />
-                    <span style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.25)', letterSpacing: '0.1em' }}>{s.num}</span>
+                    <s.icon size={22} color="hsl(var(--foreground) / 0.5)" />
+                    <span style={{ fontSize: '0.7rem', color: 'hsl(var(--foreground) / 0.25)', letterSpacing: '0.1em' }}>{s.num}</span>
                   </div>
-                  <h3 style={{ fontWeight: 700, fontSize: '1.05rem', letterSpacing: '-0.02em', marginBottom: '0.75rem' }}>{s.title}</h3>
-                  <p style={{ fontSize: '0.875rem', color: 'rgba(255,255,255,0.45)', lineHeight: 1.6 }}>{s.desc}</p>
-                  <div style={{ marginTop: '1.5rem', fontSize: '0.78rem', color: 'rgba(255,255,255,0.35)', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                  <h3 style={{ fontWeight: 700, fontSize: '1.05rem', letterSpacing: '-0.02em', marginBottom: '0.75rem', color: 'hsl(var(--foreground))' }}>{s.title}</h3>
+                  <p style={{ fontSize: '0.875rem', color: 'hsl(var(--muted-foreground))', lineHeight: 1.6 }}>{s.desc}</p>
+                  <div style={{ marginTop: '1.5rem', fontSize: '0.78rem', color: 'hsl(var(--foreground) / 0.35)', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
                     Saiba mais <ArrowRight size={13} />
                   </div>
                 </Link>
@@ -176,36 +176,36 @@ export function HomeClient() {
       </section>
 
       {/* ═══════════════════════ TRABALHOS ═══════════════════ */}
-      <section style={{ padding: '6rem 0', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+      <section style={{ padding: '6rem 0', borderTop: '1px solid hsl(var(--border) / 0.1)' }}>
         <div className="container">
           <FadeIn style={{ marginBottom: '3rem', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '1rem' }}>
             <div>
               <span className="section-label">Trabalhos Selecionados</span>
-              <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, letterSpacing: '-0.04em' }}>
-                Últimos<br /><span style={{ color: 'rgba(255,255,255,0.35)' }}>Projetos</span>
+              <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, letterSpacing: '-0.04em', color: 'hsl(var(--foreground))' }}>
+                Últimos<br /><span style={{ color: 'hsl(var(--foreground) / 0.35)' }}>Projetos</span>
               </h2>
             </div>
-            <Link href="/portfolio" style={{ fontSize: '0.8rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+            <Link href="/portfolio" style={{ fontSize: '0.8rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'hsl(var(--foreground) / 0.5)', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
               Ver Todos <ArrowRight size={14} />
             </Link>
           </FadeIn>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1px', background: 'rgba(255,255,255,0.06)' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1px', background: 'hsl(var(--border) / 0.1)' }}>
             {works.map((w, i) => (
               <FadeIn key={i} delay={i * 60}>
-                <div style={{ background: '#000', overflow: 'hidden', position: 'relative', cursor: 'pointer' }}
+                <div style={{ background: 'hsl(var(--background))', overflow: 'hidden', position: 'relative', cursor: 'pointer' }}
                   onMouseEnter={e => { const img = e.currentTarget.querySelector('img') as HTMLImageElement; if (img) img.style.transform = 'scale(1.04)' }}
                   onMouseLeave={e => { const img = e.currentTarget.querySelector('img') as HTMLImageElement; if (img) img.style.transform = 'scale(1)' }}>
                   <div style={{ aspectRatio: '4/3', overflow: 'hidden', position: 'relative' }}>
                     <Image src={w.image} alt={w.title} fill style={{ objectFit: 'cover', transition: 'transform 0.5s ease' }} sizes="(max-width:768px) 100vw, 50vw" />
-                    <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.35)' }} />
+                    <div style={{ position: 'absolute', inset: 0, background: 'hsl(var(--background) / 0.35)' }} />
                   </div>
                   <div style={{ padding: '1.5rem' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                       <div>
-                        <p style={{ fontWeight: 800, fontSize: '0.95rem', letterSpacing: '-0.01em' }}>{w.title}</p>
-                        <p style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.4)', marginTop: '0.2rem' }}>{w.subtitle}</p>
+                        <p style={{ fontWeight: 800, fontSize: '0.95rem', letterSpacing: '-0.01em', color: 'hsl(var(--foreground))' }}>{w.title}</p>
+                        <p style={{ fontSize: '0.8rem', color: 'hsl(var(--muted-foreground))', marginTop: '0.2rem' }}>{w.subtitle}</p>
                       </div>
-                      <span style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.25)' }}>{w.year}</span>
+                      <span style={{ fontSize: '0.7rem', color: 'hsl(var(--foreground) / 0.25)' }}>{w.year}</span>
                     </div>
                   </div>
                 </div>
@@ -216,20 +216,20 @@ export function HomeClient() {
       </section>
 
       {/* ═══════════════════════ PROCESSO ════════════════════ */}
-      <section style={{ padding: '6rem 0', borderTop: '1px solid rgba(255,255,255,0.06)', background: 'linear-gradient(180deg, #000 0%, #0a0a0a 100%)' }}>
+      <section style={{ padding: '6rem 0', borderTop: '1px solid hsl(var(--border) / 0.1)', background: 'linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--background) / 0.95) 100%)' }}>
         <div className="container">
           <FadeIn style={{ marginBottom: '4rem' }}>
             <span className="section-label">Como Trabalhamos</span>
-            <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, letterSpacing: '-0.04em' }}>
-              Processo<br /><span style={{ color: 'rgba(255,255,255,0.35)' }}>Passo a Passo</span>
+            <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, letterSpacing: '-0.04em', color: 'hsl(var(--foreground))' }}>
+              Processo<br /><span style={{ color: 'hsl(var(--foreground) / 0.35)' }}>Passo a Passo</span>
             </h2>
           </FadeIn>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '0', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '0', borderTop: '1px solid hsl(var(--border) / 0.1)' }}>
             {steps.map((s, i) => (
-              <FadeIn key={i} delay={i * 80} style={{ padding: '2.5rem 2rem', borderRight: '1px solid rgba(255,255,255,0.08)' }}>
-                <span style={{ fontSize: '2.5rem', fontWeight: 800, letterSpacing: '-0.06em', color: 'rgba(255,255,255,0.08)', display: 'block', marginBottom: '1.25rem' }}>{s.n}</span>
-                <h3 style={{ fontWeight: 700, fontSize: '1rem', marginBottom: '0.75rem' }}>{s.title}</h3>
-                <p style={{ fontSize: '0.875rem', color: 'rgba(255,255,255,0.4)', lineHeight: 1.6 }}>{s.desc}</p>
+              <FadeIn key={i} delay={i * 80} style={{ padding: '2.5rem 2rem', borderRight: '1px solid hsl(var(--border) / 0.1)' }}>
+                <span style={{ fontSize: '2.5rem', fontWeight: 800, letterSpacing: '-0.06em', color: 'hsl(var(--foreground) / 0.08)', display: 'block', marginBottom: '1.25rem' }}>{s.n}</span>
+                <h3 style={{ fontWeight: 700, fontSize: '1rem', marginBottom: '0.75rem', color: 'hsl(var(--foreground))' }}>{s.title}</h3>
+                <p style={{ fontSize: '0.875rem', color: 'hsl(var(--muted-foreground))', lineHeight: 1.6 }}>{s.desc}</p>
               </FadeIn>
             ))}
           </div>
@@ -237,26 +237,26 @@ export function HomeClient() {
       </section>
 
       {/* ═══════════════════════ DEPOIMENTOS ═════════════════ */}
-      <section style={{ padding: '6rem 0', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+      <section style={{ padding: '6rem 0', borderTop: '1px solid hsl(var(--border) / 0.1)' }}>
         <div className="container">
           <FadeIn style={{ marginBottom: '4rem' }}>
             <span className="section-label">Depoimentos</span>
-            <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, letterSpacing: '-0.04em' }}>
-              O Que Nossos<br /><span style={{ color: 'rgba(255,255,255,0.35)' }}>Clientes Dizem</span>
+            <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, letterSpacing: '-0.04em', color: 'hsl(var(--foreground))' }}>
+              O Que Nossos<br /><span style={{ color: 'hsl(var(--foreground) / 0.35)' }}>Clientes Dizem</span>
             </h2>
           </FadeIn>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1px', background: 'rgba(255,255,255,0.06)' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1px', background: 'hsl(var(--border) / 0.1)' }}>
             {testimonials.map((t, i) => (
               <FadeIn key={i} delay={i * 80}>
-                <div style={{ background: '#000', padding: '2.5rem 2rem' }}>
-                  <p style={{ fontSize: '0.95rem', color: 'rgba(255,255,255,0.7)', lineHeight: 1.75, marginBottom: '2rem', fontStyle: 'italic' }}>
+                <div style={{ background: 'hsl(var(--background))', padding: '2.5rem 2rem' }}>
+                  <p style={{ fontSize: '0.95rem', color: 'hsl(var(--foreground) / 0.7)', lineHeight: 1.75, marginBottom: '2rem', fontStyle: 'italic' }}>
                     &ldquo;{t.quote}&rdquo;
                   </p>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                    <CheckCircle size={16} color="rgba(255,255,255,0.3)" />
+                    <CheckCircle size={16} color="hsl(var(--foreground) / 0.3)" />
                     <div>
-                      <p style={{ fontWeight: 700, fontSize: '0.875rem' }}>{t.author}</p>
-                      <p style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.35)', marginTop: '0.15rem' }}>{t.role}</p>
+                      <p style={{ fontWeight: 700, fontSize: '0.875rem', color: 'hsl(var(--foreground))' }}>{t.author}</p>
+                      <p style={{ fontSize: '0.75rem', color: 'hsl(var(--muted-foreground))', marginTop: '0.15rem' }}>{t.role}</p>
                     </div>
                   </div>
                 </div>
@@ -267,24 +267,24 @@ export function HomeClient() {
       </section>
 
       {/* ═══════════════════════ CTA FINAL ═══════════════════ */}
-      <section style={{ padding: '6rem 0', borderTop: '1px solid rgba(255,255,255,0.06)', background: 'linear-gradient(180deg, #000 0%, #080808 100%)' }}>
+      <section style={{ padding: '6rem 0', borderTop: '1px solid hsl(var(--border) / 0.1)', background: 'linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--background) / 0.98) 100%)' }}>
         <div className="container">
           <FadeIn>
             <div style={{ maxWidth: 700, margin: '0 auto', textAlign: 'center' }}>
-              <h2 style={{ fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', fontWeight: 800, letterSpacing: '-0.05em', lineHeight: 1.05, marginBottom: '1.5rem' }}>
-                PRONTO PARA<br /><span style={{ color: 'rgba(255,255,255,0.35)' }}>ESCALAR?</span>
+              <h2 style={{ fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', fontWeight: 800, letterSpacing: '-0.05em', lineHeight: 1.05, marginBottom: '1.5rem', color: 'hsl(var(--foreground))' }}>
+                PRONTO PARA<br /><span style={{ color: 'hsl(var(--foreground) / 0.35)' }}>ESCALAR?</span>
               </h2>
-              <p style={{ fontSize: '1rem', color: 'rgba(255,255,255,0.45)', lineHeight: 1.7, marginBottom: '2.5rem', maxWidth: 480, margin: '0 auto 2.5rem' }}>
+              <p style={{ fontSize: '1rem', color: 'hsl(var(--muted-foreground))', lineHeight: 1.7, marginBottom: '2.5rem', maxWidth: 480, margin: '0 auto 2.5rem' }}>
                 Agende uma análise gratuita e montamos um plano de ação para sua empresa dominar os buscadores e as IAs.
               </p>
               <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                <Link href="/simulador" style={{ padding: '1rem 2.5rem', background: '#fff', color: '#000', fontWeight: 700, fontSize: '0.85rem', letterSpacing: '0.08em', textTransform: 'uppercase', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', transition: 'opacity 0.2s' }}
+                <Link href="/simulador" style={{ padding: '1rem 2.5rem', background: 'hsl(var(--foreground))', color: 'hsl(var(--background))', fontWeight: 700, fontSize: '0.85rem', letterSpacing: '0.08em', textTransform: 'uppercase', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', transition: 'opacity 0.2s' }}
                   onMouseEnter={e => (e.currentTarget.style.opacity = '0.85')}
                   onMouseLeave={e => (e.currentTarget.style.opacity = '1')}>
                   Iniciar Diagnóstico <ArrowRight size={15} />
                 </Link>
                 <a href="https://wa.me/5511922908507" target="_blank" rel="noopener noreferrer"
-                  style={{ padding: '1rem 2.5rem', border: '1px solid rgba(255,255,255,0.25)', color: '#fff', fontWeight: 600, fontSize: '0.85rem', letterSpacing: '0.04em', textTransform: 'uppercase' }}>
+                  style={{ padding: '1rem 2.5rem', border: '1px solid hsl(var(--border) / 0.25)', color: 'hsl(var(--foreground))', fontWeight: 600, fontSize: '0.85rem', letterSpacing: '0.04em', textTransform: 'uppercase' }}>
                   WhatsApp
                 </a>
               </div>

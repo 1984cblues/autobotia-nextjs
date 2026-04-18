@@ -26,13 +26,13 @@ const cols = [
 
 export function Footer() {
   return (
-    <footer style={{ borderTop: '1px solid rgba(255,255,255,0.08)', background: '#000', padding: '4rem 0 2.5rem' }}>
+    <footer style={{ borderTop: '1px solid hsl(var(--border) / 0.1)', background: 'hsl(var(--background))', padding: '4rem 0 2.5rem' }}>
       <div className="container">
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '3rem', marginBottom: '3rem' }}>
           {/* Brand */}
           <div>
-            <p style={{ fontWeight: 800, fontSize: '1.15rem', letterSpacing: '-0.04em', marginBottom: '1rem' }}>AUTOBOTIA</p>
-            <p style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.45)', lineHeight: 1.7, maxWidth: 240 }}>
+            <p style={{ fontWeight: 800, fontSize: '1.15rem', letterSpacing: '-0.04em', marginBottom: '1rem', color: 'hsl(var(--foreground))' }}>AUTOBOTIA</p>
+            <p style={{ fontSize: '0.85rem', color: 'hsl(var(--muted-foreground))', lineHeight: 1.7, maxWidth: 240 }}>
               Sites profissionais e estratégias de visibilidade para empresas que querem crescer.
             </p>
             <a
@@ -47,8 +47,8 @@ export function Footer() {
                 letterSpacing: '0.1em',
                 textTransform: 'uppercase',
                 padding: '0.6rem 1.25rem',
-                border: '1px solid rgba(255,255,255,0.25)',
-                color: '#fff',
+                border: '1px solid hsl(var(--border))',
+                color: 'hsl(var(--foreground))',
                 transition: 'all 0.2s',
               }}
             >
@@ -59,15 +59,15 @@ export function Footer() {
           {/* Link cols */}
           {cols.map((col) => (
             <div key={col.title}>
-              <p style={{ fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginBottom: '1.25rem' }}>
+              <p style={{ fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'hsl(var(--muted-foreground))', marginBottom: '1.25rem' }}>
                 {col.title}
               </p>
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                 {col.links.map((l) => (
                   <li key={l.href}>
-                    <Link href={l.href} style={{ fontSize: '0.875rem', color: 'rgba(255,255,255,0.55)', transition: 'color 0.2s' }}
-                      onMouseEnter={e => (e.currentTarget.style.color = '#fff')}
-                      onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.55)')}>
+                    <Link href={l.href} style={{ fontSize: '0.875rem', color: 'hsl(var(--foreground) / 0.65)', transition: 'color 0.2s' }}
+                      onMouseEnter={e => (e.currentTarget.style.color = 'hsl(var(--foreground))')}
+                      onMouseLeave={e => (e.currentTarget.style.color = 'hsl(var(--foreground) / 0.65)')}>
                       {l.label}
                     </Link>
                   </li>
@@ -77,11 +77,11 @@ export function Footer() {
           ))}
         </div>
 
-        <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: '1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
-          <p style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.25)' }}>
+        <div style={{ borderTop: '1px solid hsl(var(--border) / 0.1)', paddingTop: '1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
+          <p style={{ fontSize: '0.75rem', color: 'hsl(var(--muted-foreground))' }}>
             © {new Date().getFullYear()} Autobotia. Todos os direitos reservados.
           </p>
-          <p style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.25)' }}>
+          <p style={{ fontSize: '0.75rem', color: 'hsl(var(--muted-foreground))' }}>
             contato@autobotia.com.br
           </p>
         </div>
