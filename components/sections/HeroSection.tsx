@@ -27,7 +27,7 @@ export function HeroSection() {
         }}
       />
 
-      <div className="relative mx-auto flex min-h-screen max-w-[1400px] flex-col items-center gap-12 px-6 py-24 md:flex-row md:gap-0 md:px-12 lg:px-16">
+      <div className="relative flex max-w-[1400px] flex-col items-center gap-8 px-6 pt-24 pb-12 md:min-h-screen md:flex-row md:items-start md:gap-6 md:px-12 md:pt-24 md:pb-8 lg:px-16" style={{ marginInline: "auto" }}>
         {/* ── Coluna Esquerda: Copy ── */}
         <div className="flex w-full flex-col justify-center md:w-[48%]">
           {/* Badge */}
@@ -124,36 +124,15 @@ export function HeroSection() {
         </div>
 
         {/* ── Coluna Direita: Simulação Google SERP POV ── */}
-        <div className="relative flex w-full items-center justify-center md:w-[54%]">
-          <div className="relative h-[600px] w-full max-w-[620px] md:h-[680px]">
-            {/* Efeito de profundidade/sombra atrás do card */}
-            <div className="absolute inset-0 -m-4 rounded-[20px] bg-black/5 blur-2xl dark:bg-white/5" />
-
-            {/* Componente Google SERP POV */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
-              className="relative h-full w-full"
-            >
-              <GoogleSerpPOV />
-            </motion.div>
-
-            {/* Badge de contexto flutuante */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 1.5, duration: 0.6 }}
-              className="absolute -right-4 top-1/4 z-10 hidden rounded-xl border border-neutral-100 bg-white p-4 shadow-xl dark:border-white/10 dark:bg-black/80 md:block"
-            >
-              <div className="flex items-center gap-3">
-                <div className="h-2 w-2 animate-pulse rounded-full bg-emerald-500" />
-                <p className="text-[11px] font-bold uppercase tracking-wider text-neutral-500">
-                  Simulação em Tempo Real
-                </p>
-              </div>
-            </motion.div>
-          </div>
+        <div className="relative flex w-full items-start justify-center md:w-[52%] md:pt-4">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96, y: 16 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
+            className="relative h-[440px] w-full max-w-[520px] md:h-[520px]"
+          >
+            <GoogleSerpPOV />
+          </motion.div>
         </div>
       </div>
 
