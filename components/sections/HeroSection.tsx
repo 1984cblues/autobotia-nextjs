@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { VisibilityMapHero } from "@/components/ui/visibility-map-hero";
+import { GoogleSerpPOV } from "@/components/ui/google-serp-pov";
 import { TrendingUp, Award, Zap } from "lucide-react";
 
 
@@ -123,32 +123,35 @@ export function HeroSection() {
           </motion.div>
         </div>
 
-        {/* ── Coluna Direita: Mapa de Visibilidade ── */}
+        {/* ── Coluna Direita: Simulação Google SERP POV ── */}
         <div className="relative flex w-full items-center justify-center md:w-[54%]">
-          <div className="relative h-[550px] w-full max-w-[620px] md:h-[650px]">
-            {/* Halo de brilho atrás do mapa */}
-            <div className="absolute left-1/2 top-1/2 h-[450px] w-[450px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-500/5 blur-3xl dark:bg-blue-500/10" />
+          <div className="relative h-[600px] w-full max-w-[620px] md:h-[680px]">
+            {/* Efeito de profundidade/sombra atrás do card */}
+            <div className="absolute inset-0 -m-4 rounded-[20px] bg-black/5 blur-2xl dark:bg-white/5" />
 
-            {/* Mapa de Visibilidade */}
+            {/* Componente Google SERP POV */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.92, y: 20 }}
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
               className="relative h-full w-full"
             >
-              <VisibilityMapHero />
+              <GoogleSerpPOV />
             </motion.div>
 
-            {/* Label inferior do mapa */}
+            {/* Badge de contexto flutuante */}
             <motion.div
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.2, duration: 0.5 }}
-              className="absolute -bottom-4 left-1/2 -translate-x-1/2 rounded-full border border-neutral-100 bg-white/80 px-4 py-1.5 shadow-lg backdrop-blur-sm dark:border-white/10 dark:bg-black/60 md:-bottom-8"
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 1.5, duration: 0.6 }}
+              className="absolute -right-4 top-1/4 z-10 hidden rounded-xl border border-neutral-100 bg-white p-4 shadow-xl dark:border-white/10 dark:bg-black/80 md:block"
             >
-              <p className="whitespace-nowrap text-[10px] font-bold uppercase tracking-[0.15em] text-neutral-500 dark:text-neutral-400">
-                📊 Alcance de Visibilidade em São Paulo
-              </p>
+              <div className="flex items-center gap-3">
+                <div className="h-2 w-2 animate-pulse rounded-full bg-emerald-500" />
+                <p className="text-[11px] font-bold uppercase tracking-wider text-neutral-500">
+                  Simulação em Tempo Real
+                </p>
+              </div>
             </motion.div>
           </div>
         </div>
