@@ -27,10 +27,10 @@ function FadeIn({ children, delay = 0, className = '', style = {} }: {
 }
 
 const services = [
-  { icon: Monitor, num: '01', title: 'Web Design & LP', desc: 'Sites de alta conversão construídos artesanalmente — do copywriting ao deploy. Next.js, a stack do Vale do Silício.', href: '/servicos/web-design' },
-  { icon: MapPin, num: '02', title: 'SEO Local', desc: 'Apareça quando o cliente está com o cartão de crédito na mão, pesquisando "perto de mim" no Google e Maps.', href: '/servicos/seo-local' },
-  { icon: BookOpen, num: '03', title: 'SEO Content', desc: 'Clusters semânticos e artigos técnicos que constroem autoridade orgânica sustentável no longo prazo.', href: '/servicos/seo' },
-  { icon: Brain, num: '04', title: 'Visibilidade em IAs', desc: 'Seu negócio citado no ChatGPT, Gemini e Perplexity. O canal de descoberta que ninguém está trabalhando.', href: '/servicos/geo' },
+  { icon: Monitor, num: '01', title: 'Criação de Site', desc: 'Um site bonito, rápido e que aparece no Google. Sem template genérico — feito sob medida pro seu negócio.', href: '/servicos/web-design' },
+  { icon: MapPin, num: '02', title: 'Google Maps', desc: 'Quando alguém pesquisa "perto de mim", é SUA empresa que vai aparecer no mapa — não a do concorrente.', href: '/servicos/seo-local' },
+  { icon: BookOpen, num: '03', title: 'Blog que Traz Clientes', desc: 'Artigos que respondem as dúvidas do seu cliente e posicionam sua empresa como referência na sua cidade.', href: '/servicos/seo' },
+  { icon: Brain, num: '04', title: 'ChatGPT e IAs', desc: 'Cada vez mais gente pergunta pro ChatGPT. Fazemos sua empresa ser a resposta quando perguntarem sobre o que você faz.', href: '/servicos/geo' },
 ]
 
 const works = [
@@ -41,16 +41,16 @@ const works = [
 ]
 
 const testimonials = [
-  { quote: 'O site novo aumentou nossa captação de clientes em mais de 3x em 2 meses. A equipe entendeu exatamente o posicionamento que precisávamos.', author: 'Alex Oliveira', role: 'Advogado | Direito do Consumidor' },
-  { quote: 'Profissionalismo do início ao fim. O SEO Local fez nosso restaurante aparecer no topo do Google Maps e as reservas subiram imediatamente.', author: 'Ana Reichert', role: 'Proprietária | Restaurante Aroma' },
-  { quote: 'Em menos de 30 dias, a Autobotia entregou uma landing page que converteu mais do que todas as nossas campanhas de tráfego pago juntas.', author: 'Marcos Vieira', role: 'CEO | Vendmix' },
+  { quote: 'Antes eu dependia só de indicação. Agora meu telefone toca toda semana com clientes que me acharam no Google. Melhor investimento que fiz.', author: 'Escritório de Advocacia', role: 'São Paulo, SP' },
+  { quote: 'Em 2 meses aparecendo no Google Maps, as reservas pelo site triplicaram. A gente nem precisou mais pagar anúncio.', author: 'Dono de Restaurante', role: 'Campinas, SP' },
+  { quote: 'Eu não tinha site. Em 30 dias já estava no ar e recebendo contato de gente que pesquisou meu serviço na cidade.', author: 'Clínica de Estética', role: 'Rio de Janeiro, RJ' },
 ]
 
 const steps = [
-  { n: '01', title: 'UX & Copywriting', desc: 'Entendemos seu serviço e construímos narrativas que o cérebro deseja comprar.' },
-  { n: '02', title: 'Infraestrutura', desc: 'Desenvolvimento em Next.js focando 100% nos Core Web Vitals do Google.' },
-  { n: '03', title: 'SEO e Autoridade', desc: 'Abrimos as torneiras de tráfego local com conteúdo AI-optimized.' },
-  { n: '04', title: 'Manutenção', desc: 'Apoiamos seu crescimento mês a mês, sem templates quebrados no caminho.' },
+  { n: '01', title: 'Conversa', desc: 'Você nos conta sobre o seu negócio numa conversa rápida de 15 minutos. Sem compromisso, sem enrolação.' },
+  { n: '02', title: 'Criamos Tudo', desc: 'Em poucos dias, seu site fica pronto. Bonito, rápido e já preparado pra aparecer no Google.' },
+  { n: '03', title: 'Você Aparece', desc: 'Seu telefone começa a tocar. Clientes te acham no Google, no Maps e até no ChatGPT.' },
+  { n: '04', title: 'Crescemos Juntos', desc: 'Acompanhamos seus resultados todo mês e ajustamos a estratégia pra trazer ainda mais clientes.' },
 ]
 
 export function HomeClient() {
@@ -64,9 +64,9 @@ export function HomeClient() {
       <section id="servicos" style={{ padding: '6rem 0', borderTop: '1px solid hsl(var(--border) / 0.1)' }}>
         <div className="container">
           <FadeIn style={{ marginBottom: '4rem' }}>
-            <span className="section-label">Nossa Abordagem</span>
+            <span className="section-label">O Que Fazemos</span>
             <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3.25rem)', fontWeight: 800, letterSpacing: '-0.04em', maxWidth: 560, color: 'hsl(var(--foreground))' }}>
-              A Escada de<br /><span style={{ color: 'hsl(var(--foreground) / 0.35)' }}>Tração Autobotia</span>
+              Tudo que sua empresa<br /><span style={{ color: 'hsl(var(--foreground) / 0.35)' }}>precisa pra ser encontrada</span>
             </h2>
           </FadeIn>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '0' }}>
@@ -96,9 +96,9 @@ export function HomeClient() {
         <div className="container">
           <FadeIn style={{ marginBottom: '3rem', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '1rem' }}>
             <div>
-              <span className="section-label">Trabalhos Selecionados</span>
+              <span className="section-label">Nossos Trabalhos</span>
               <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, letterSpacing: '-0.04em', color: 'hsl(var(--foreground))' }}>
-                Últimos<br /><span style={{ color: 'hsl(var(--foreground) / 0.35)' }}>Projetos</span>
+                Empresas que<br /><span style={{ color: 'hsl(var(--foreground) / 0.35)' }}>Já Apareceram</span>
               </h2>
             </div>
             <Link href="/portfolio" style={{ fontSize: '0.8rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'hsl(var(--foreground) / 0.5)', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
@@ -135,9 +135,9 @@ export function HomeClient() {
       <section style={{ padding: '6rem 0', borderTop: '1px solid hsl(var(--border) / 0.1)', background: 'linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--background) / 0.95) 100%)' }}>
         <div className="container">
           <FadeIn style={{ marginBottom: '4rem' }}>
-            <span className="section-label">Como Trabalhamos</span>
+            <span className="section-label">Simples e Rápido</span>
             <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, letterSpacing: '-0.04em', color: 'hsl(var(--foreground))' }}>
-              Processo<br /><span style={{ color: 'hsl(var(--foreground) / 0.35)' }}>Passo a Passo</span>
+              Como<br /><span style={{ color: 'hsl(var(--foreground) / 0.35)' }}>Funciona</span>
             </h2>
           </FadeIn>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '0', borderTop: '1px solid hsl(var(--border) / 0.1)' }}>
@@ -156,9 +156,9 @@ export function HomeClient() {
       <section style={{ padding: '6rem 0', borderTop: '1px solid hsl(var(--border) / 0.1)' }}>
         <div className="container">
           <FadeIn style={{ marginBottom: '4rem' }}>
-            <span className="section-label">Depoimentos</span>
+            <span className="section-label">Resultados Reais</span>
             <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, letterSpacing: '-0.04em', color: 'hsl(var(--foreground))' }}>
-              O Que Nossos<br /><span style={{ color: 'hsl(var(--foreground) / 0.35)' }}>Clientes Dizem</span>
+              Quem Já<br /><span style={{ color: 'hsl(var(--foreground) / 0.35)' }}>Apareceu no Google</span>
             </h2>
           </FadeIn>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1px', background: 'hsl(var(--border) / 0.1)' }}>
@@ -188,17 +188,17 @@ export function HomeClient() {
           <FadeIn>
             <div style={{ maxWidth: 700, margin: '0 auto', textAlign: 'center' }}>
               <h2 style={{ fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', fontWeight: 800, letterSpacing: '-0.05em', lineHeight: 1.05, marginBottom: '1.5rem', color: 'hsl(var(--foreground))' }}>
-                PRONTO PARA<br /><span style={{ color: 'hsl(var(--foreground) / 0.35)' }}>ESCALAR?</span>
+                SEUS CONCORRENTES<br /><span style={{ color: 'hsl(var(--foreground) / 0.35)' }}>JÁ ESTÃO NO GOOGLE.</span>
               </h2>
               <p style={{ fontSize: '1rem', color: 'hsl(var(--muted-foreground))', lineHeight: 1.7, marginBottom: '2.5rem', maxWidth: 480, margin: '0 auto 2.5rem' }}>
-                Agende uma análise gratuita e montamos um plano de ação para sua empresa dominar os buscadores e as IAs.
+                Fazemos uma análise grátis do seu negócio. Mostramos exatamente onde você está perdendo clientes — e como resolver.
               </p>
               <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                <Link href="/simulador" style={{ padding: '1rem 2.5rem', background: 'hsl(var(--foreground))', color: 'hsl(var(--background))', fontWeight: 700, fontSize: '0.85rem', letterSpacing: '0.08em', textTransform: 'uppercase', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', transition: 'opacity 0.2s' }}
+                <a href="https://wa.me/5511922908507?text=Oi%2C%20quero%20uma%20an%C3%A1lise%20gr%C3%A1tis%20do%20meu%20neg%C3%B3cio" target="_blank" rel="noopener noreferrer" style={{ padding: '1rem 2.5rem', background: 'hsl(var(--foreground))', color: 'hsl(var(--background))', fontWeight: 700, fontSize: '0.85rem', letterSpacing: '0.08em', textTransform: 'uppercase', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', transition: 'opacity 0.2s' }}
                   onMouseEnter={e => (e.currentTarget.style.opacity = '0.85')}
                   onMouseLeave={e => (e.currentTarget.style.opacity = '1')}>
-                  Iniciar Diagnóstico <ArrowRight size={15} />
-                </Link>
+                  Ver Minha Análise Grátis <ArrowRight size={15} />
+                </a>
                 <a href="https://wa.me/5511922908507" target="_blank" rel="noopener noreferrer"
                   style={{ padding: '1rem 2.5rem', border: '1px solid hsl(var(--border) / 0.25)', color: 'hsl(var(--foreground))', fontWeight: 600, fontSize: '0.85rem', letterSpacing: '0.04em', textTransform: 'uppercase' }}>
                   WhatsApp

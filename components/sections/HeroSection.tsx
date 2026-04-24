@@ -38,7 +38,7 @@ export function HeroSection() {
             animate="visible"
           >
             <span className="inline-block border border-black/20 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-neutral-500 dark:text-neutral-400 dark:border-white/20">
-              Arquitetura de Conversão Premium
+              Mais de 50 empresas já aparecem no Google com a gente
             </span>
           </motion.div>
 
@@ -50,11 +50,11 @@ export function HeroSection() {
             animate="visible"
             className="mt-5 font-heading text-[clamp(2.8rem,6vw,5.5rem)] font-black leading-[0.92] tracking-tight"
           >
-            <span className="text-neutral-900 dark:text-white">PARE DE</span>
+            <span className="text-neutral-900 dark:text-white">SEU CLIENTE</span>
             <br />
-            <span className="text-neutral-400 dark:text-neutral-600">TER UM</span>
+            <span className="text-neutral-400 dark:text-neutral-600">PESQUISOU</span>
             <br />
-            <span className="text-neutral-400 dark:text-neutral-600">PANFLETO.</span>
+            <span className="text-neutral-400 dark:text-neutral-600">E NÃO TE ACHOU.</span>
           </motion.h1>
 
           {/* Subtítulo */}
@@ -65,12 +65,11 @@ export function HeroSection() {
             animate="visible"
             className="mt-6 max-w-[420px] text-base leading-relaxed text-neutral-500 dark:text-neutral-400 md:text-lg"
           >
-            Desenvolvemos sites profissionais e estratégias de visibilidade que
-            fazem sua empresa ser{" "}
+            Criamos o site da sua empresa e fazemos ele{" "}
             <strong className="text-neutral-900 dark:text-white">
-              encontrada no Google e no ChatGPT
+              aparecer no Google e no ChatGPT
             </strong>{" "}
-            — onde seus clientes estão buscando agora.
+            — pra que os clientes achem você, e não o concorrente.
           </motion.p>
 
           {/* Proof bar */}
@@ -82,9 +81,9 @@ export function HeroSection() {
             className="mt-8 flex items-center gap-6"
           >
             {[
-              { value: "+340%", label: "Tráfego médio" },
-              { value: "90d", label: "Resultados visíveis" },
-              { value: "4.9★", label: "Avaliação clientes" },
+              { value: "+3x", label: "Novos clientes" },
+              { value: "30 dias", label: "Pra aparecer" },
+              { value: "4.9★", label: "No Google" },
             ].map((stat) => (
               <div key={stat.label} className="flex flex-col">
                 <span className="text-xl font-black text-neutral-900 dark:text-white">
@@ -106,10 +105,12 @@ export function HeroSection() {
             className="mt-10 flex flex-wrap gap-4"
           >
             <a
-              href="#contato"
+              href="https://wa.me/5511922908507?text=Oi%2C%20quero%20aparecer%20no%20Google"
+              target="_blank"
+              rel="noopener noreferrer"
               className="group flex cursor-pointer items-center gap-2 bg-neutral-900 px-6 py-3.5 text-sm font-bold uppercase tracking-widest text-white transition-all duration-200 hover:bg-neutral-700 active:scale-[.98] dark:bg-white dark:text-black dark:hover:bg-neutral-200"
             >
-              Análise Gratuita
+              Quero Aparecer no Google
               <span className="transition-transform duration-200 group-hover:translate-x-1">
                 →
               </span>
@@ -118,7 +119,7 @@ export function HeroSection() {
               href="#servicos"
               className="flex cursor-pointer items-center gap-2 border border-neutral-900 px-6 py-3.5 text-sm font-bold uppercase tracking-widest text-neutral-900 transition-all duration-200 hover:bg-neutral-100 active:scale-[.98] dark:border-white dark:text-white dark:hover:bg-white/10"
             >
-              Ver Serviços
+              Como Funciona?
             </a>
           </motion.div>
         </div>
