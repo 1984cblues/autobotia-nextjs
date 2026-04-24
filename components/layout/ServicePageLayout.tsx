@@ -38,12 +38,12 @@ export function ServicePageLayout({
             {description}
           </p>
           <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-            <a href="https://wa.me/5511922908507" target="_blank" rel="noopener noreferrer"
+            <a href="https://wa.me/5511922908507?text=Oi%2C%20quero%20um%20or%C3%A7amento%20gr%C3%A1tis" target="_blank" rel="noopener noreferrer"
               style={{ padding: '0.9rem 2rem', background: '#fff', color: '#000', fontWeight: 700, fontSize: '0.82rem', letterSpacing: '0.07em', textTransform: 'uppercase', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
               {ctaText} <ArrowRight size={14} />
             </a>
             <Link href="/simulador" style={{ padding: '0.9rem 2rem', border: '1px solid rgba(255,255,255,0.2)', color: '#fff', fontWeight: 600, fontSize: '0.82rem', letterSpacing: '0.04em', textTransform: 'uppercase' }}>
-              Simular Escopo
+              Como Funciona?
             </Link>
           </div>
         </div>
@@ -71,14 +71,14 @@ export function ServicePageLayout({
       <section style={{ padding: '5rem 0' }}>
         <div className="container" style={{ textAlign: 'center' }}>
           <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)', fontWeight: 800, letterSpacing: '-0.05em', marginBottom: '1.25rem' }}>
-            PRÓXIMO PASSO?
+            VAMOS COMEÇAR?
           </h2>
           <p style={{ fontSize: '0.95rem', color: 'rgba(255,255,255,0.45)', maxWidth: 440, margin: '0 auto 2rem', lineHeight: 1.7 }}>
-            Sem compromisso. Analisamos seu negócio e apresentamos um plano concreto.
+            É rápido, grátis e sem compromisso. Você fala com um especialista — não com um robô.
           </p>
-          <a href="https://wa.me/5511922908507" target="_blank" rel="noopener noreferrer"
+          <a href="https://wa.me/5511922908507?text=Oi%2C%20quero%20um%20or%C3%A7amento%20gr%C3%A1tis" target="_blank" rel="noopener noreferrer"
             style={{ padding: '1rem 2.5rem', background: '#fff', color: '#000', fontWeight: 700, fontSize: '0.85rem', letterSpacing: '0.08em', textTransform: 'uppercase', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
-            Falar no WhatsApp <ArrowRight size={15} />
+            Falar Agora no WhatsApp <ArrowRight size={15} />
           </a>
         </div>
       </section>
