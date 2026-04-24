@@ -74,7 +74,7 @@ export function Navbar() {
               onMouseEnter={e => { e.currentTarget.style.background = 'hsl(var(--foreground))'; e.currentTarget.style.color = 'hsl(var(--background))' }}
               onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'hsl(var(--foreground))' }}
             >
-              Orçamento
+              Falar Agora
             </Link>
           </nav>
           

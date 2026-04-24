@@ -6,11 +6,11 @@ const cols = [
   {
     title: 'Serviços',
     links: [
-      { label: 'Web Design & LP', href: '/servicos/web-design' },
-      { label: 'SEO Local', href: '/servicos/seo-local' },
-      { label: 'SEO Content', href: '/servicos/seo' },
-      { label: 'GEO — Visibilidade IA', href: '/servicos/geo' },
-      { label: 'AEO — Answer Engine', href: '/servicos/aeo' },
+      { label: 'Criação de Site', href: '/servicos/web-design' },
+      { label: 'Google Maps (SEO Local)', href: '/servicos/seo-local' },
+      { label: 'Blog que Traz Clientes', href: '/servicos/seo' },
+      { label: 'Aparecer no ChatGPT', href: '/servicos/geo' },
+      { label: 'Respostas do Google', href: '/servicos/aeo' },
     ],
   },
   {
@@ -33,7 +33,7 @@ export function Footer() {
           <div>
             <p style={{ fontWeight: 800, fontSize: '1.15rem', letterSpacing: '-0.04em', marginBottom: '1rem', color: 'hsl(var(--foreground))' }}>AUTOBOTIA</p>
             <p style={{ fontSize: '0.85rem', color: 'hsl(var(--muted-foreground))', lineHeight: 1.7, maxWidth: 240 }}>
-              Sites profissionais e estratégias de visibilidade para empresas que querem crescer.
+              Criamos o site da sua empresa e fazemos você aparecer no Google e no ChatGPT.
             </p>
             <a
               href="https://wa.me/5511922908507"

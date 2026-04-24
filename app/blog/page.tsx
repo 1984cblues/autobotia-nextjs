@@ -23,6 +23,11 @@ interface BlogPage {
   data: BlogData;
 }
 
+export const metadata = {
+  title: 'Dicas para seu negócio crescer | Autobotia Blog',
+  description: 'Estratégias simples e práticas para sua empresa aparecer no Google, no ChatGPT e atrair mais clientes todos os dias.',
+}
+
 const blogSource = loader({
   baseUrl: "/blog",
   source: toFumadocsSource(docs as any, meta as any),
@@ -90,10 +95,10 @@ export default async function BlogIndexPage({
         <div className="max-w-7xl mx-auto w-full">
           <div className="flex flex-col gap-2">
             <h1 className="font-medium text-4xl md:text-5xl tracking-tighter text-foreground">
-              Autobotia Blog
+              Dicas para seu negócio crescer
             </h1>
             <p className="text-muted-foreground text-sm md:text-base lg:text-lg max-w-2xl">
-              Insights sobre SEO de Nova Geração, GEO (Generative Engine Optimization) e o futuro da visibilidade digital.
+              Estratégias simples para sua empresa aparecer no Google, no ChatGPT e atrair mais clientes todos os dias.
             </p>
           </div>
         </div>
