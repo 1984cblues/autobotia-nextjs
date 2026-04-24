@@ -12,12 +12,16 @@ export function GeoClient() {
 
   const faqs = [
     {
-      q: "Qual a diferença entre SEO e GEO?",
-      a: "SEO (Search Engine Optimization) foca em ranquear links baseados em palavras-chave no Google clássico. GEO (Generative Engine Optimization) adapta seu conteúdo para ser a resposta DIRETA gerada pelas Inteligências Artificiais e AI Overviews."
+      q: "O que é isso de ChatGPT recomendar empresa?",
+      a: "Cada vez mais pessoas, em vez de pesquisar no Google, estão digitando perguntas direto no ChatGPT ou no Gemini — como 'qual o melhor dentista em São Paulo?' ou 'quem faz reforma de apartamento bem perto de mim?'. Nossa estratégia faz a sua empresa ser a resposta que essas IAs indicam."
     },
     {
-      q: "Posso fazer GEO se não tenho um site?",
-      a: "É extremamente difícil. O site é a âncora principal de informação oficial que as IAs usam para validar quem você é. Sem um site otimizado (que nós podemos fazer), a IA confia menos na sua marca."
+      q: "Preciso ter um site pra isso funcionar?",
+      a: "Sim, e com razão: o ChatGPT e o Google precisam de um lugar oficial pra buscar informações sobre o seu negócio. Um site bem feito é a âncora que faz as IAs confiarem na sua empresa. Se você ainda não tem site, a gente resolve isso primeiro."
+    },
+    {
+      q: "Minha empresa é pequena. Vale a pena?",
+      a: "Justamente por isso vale. A maioria das empresas pequenas ainda não fez nada pra aparecer nas IAs. Agir agora é como aparecer no Google há 10 anos atrás — você chega antes da concorrência e domina o espaço primeiro."
     }
   ]
 
@@ -28,14 +32,14 @@ export function GeoClient() {
         <div className="container">
           <SectionWrapper>
              <div className="section-label" style={{ display: 'inline-flex', margin: '0 auto 1.5rem', justifyContent: 'center' }}>
-                O Fim do SEO Tradicional?
+                ChatGPT e Inteligências Artificiais
              </div>
             <h1 className={styles.title}>
-              Sua marca como <span className="text-gradient">Resposta</span>{' '}
-              nas IAs.
+              Quando perguntam pro ChatGPT,{' '}
+              <span className="text-gradient">sua empresa é a resposta.</span>
             </h1>
             <p className={styles.description}>
-              Os clientes pararam de "pesquisar" no Google e começaram a "perguntar" às Inteligências Artificiais. Sua empresa está pronta para ser a resposta?
+              As pessoas estão parando de pesquisar no Google e começando a perguntar pras IAs. Se o ChatGPT não conhece a sua empresa, você está perdendo clientes sem saber disso.
             </p>
             
             <div className={styles.aiChips}>
@@ -50,41 +54,47 @@ export function GeoClient() {
                </div>
             </div>
 
-            <Button variant="primary" size="lg" href="/simulador">
-              Quero ser encontrado nas IAs
-            </Button>
+            <a
+              href="https://wa.me/5511922908507?text=Oi%2C%20quero%20que%20minha%20empresa%20apare%C3%A7a%20no%20ChatGPT"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button variant="primary" size="lg">
+                Quero aparecer nas IAs →
+              </Button>
+            </a>
           </SectionWrapper>
         </div>
       </section>
 
-      {/* Diferenciais */}
+      {/* Como funciona */}
       <section className={styles.features}>
         <div className="container">
           <SectionWrapper className="text-center">
-            <span className="section-label">Como o GEO funciona</span>
-            <h2>Mais que Palavras-Chave. Contexto.</h2>
+            <span className="section-label">O que fazemos por você</span>
+            <h2>Como a gente faz o ChatGPT te recomendar</h2>
           </SectionWrapper>
 
           <div className={styles.featureGrid}>
             <SectionWrapper delay={0.1}>
               <GlowCard
                 icon={<></>}
-                title="Auditoria de Entidades"
-                description="Mapeamos como os LLMs (Language Models) enxergam a sua marca atualmente e o que precisa ser corrigido."
+                title="Verificamos se a IA já te conhece"
+                description="Testamos como o ChatGPT, Gemini e Perplexity falam (ou ignoram) a sua empresa hoje. Esse diagnóstico revela o que precisa ser feito."
               />
             </SectionWrapper>
             <SectionWrapper delay={0.2}>
               <GlowCard
                 icon={<></>}
-                title="Estrutura de Dados (JSON-LD)"
-                description="Criamos esquemas técnicos ocultos no seu site que mastigam a informação para o Google AI engolir fácil."
+                title="Organizamos as informações do seu negócio"
+                description="Estruturamos os dados da sua empresa de um jeito que as IAs entendem e confiam. Você não precisa saber como funciona — é tudo invisível pra você."
               />
             </SectionWrapper>
             <SectionWrapper delay={0.3}>
               <GlowCard
                 icon={<></>}
-                title="Conteúdo Citável"
-                description="Otimizamos os textos do seu site em formatos que as IAs amam referenciar (como este FAQ e passos enumerados)."
+                title="Criamos conteúdo que a IA cita"
+                description="Escrevemos textos com o formato exato que o ChatGPT e o Google adoram referenciar — respostas diretas, claras e com autoridade."
               />
             </SectionWrapper>
           </div>
@@ -94,7 +104,7 @@ export function GeoClient() {
        <section className={styles.features} style={{ background: 'var(--color-bg)' }}>
         <div className="container">
            <SectionWrapper className="text-center" style={{ marginBottom: "var(--space-6)"}}>
-             <h2>Dúvidas Frequentes sobre GEO</h2>
+             <h2>Perguntas Frequentes</h2>
            </SectionWrapper>
            <div style={{ maxWidth: '700px', margin: '0 auto'}}>
              {faqs.map((faq, i) => (
