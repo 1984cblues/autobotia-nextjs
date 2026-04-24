@@ -82,21 +82,21 @@ export default async function CityPage({ params }: Props) {
         <section className={styles.cityHero}>
           <div className="container text-center">
             <SectionWrapper animation="fade-up">
-              <span className="section-label">Autobot IA em {city.stateAcronym}</span>
+              <span className="section-label">Presença Digital em {city.stateAcronym}</span>
               <h1 className={styles.heroTitle}>
-                Sites fáceis de achar e feitos para vender em <span className="text-highlight">{city.cityName}</span>
+                Apareça para os clientes de <span className="text-highlight">{city.cityName}</span> quando eles mais precisam
               </h1>
               <p className={styles.heroSubtitle}>
-                Ajudamos negócios locais de {city.cityName} ({city.populationInfo}) a pararem de perder
-                clientes para a concorrência na busca do Google e no ChatGPT.
+                Ajudamos empresas e profissionais de {city.cityName} ({city.populationInfo}) a pararem de perder
+                clientes para o concorrente da esquina que já está no Google.
               </p>
               
               <div style={{ marginTop: '2rem', display: 'flex', gap: '1rem', justifyContent: 'center' }}>
-                <Button size="lg" variant="primary" href="https://wa.me/5511922908507" target="_blank">
-                  Pedir Orçamento Exclusivo
+                <Button size="lg" variant="primary" href="https://wa.me/5511922908507?text=Oi%2C%20quero%20um%20or%C3%A7amento%20gr%C3%A1tis" target="_blank">
+                  Quero um orçamento grátis
                 </Button>
                 <Button size="lg" variant="outline" href="/simulador">
-                  Simular Escopo
+                  Como funciona?
                 </Button>
               </div>
             </SectionWrapper>
@@ -107,9 +107,9 @@ export default async function CityPage({ params }: Props) {
         <section className={styles.localMarket}>
           <div className="container">
             <SectionWrapper animation="fade-up" className="text-center" style={{ marginBottom: '3rem' }}>
-              <h2>Destaques do mercado de {city.cityName}</h2>
+              <h2>Negócios que mais buscam clientes em {city.cityName}</h2>
               <p style={{ color: 'var(--color-text-muted)', maxWidth: 600, margin: '0 auto' }}>
-                Atendemos demandas de alta performance específicas da região, estruturando sistemas que escalam negócios reais.
+                Ajudamos empresas desses setores a aparecerem nas buscas locais e mapas da sua região.
               </p>
             </SectionWrapper>
 
@@ -119,7 +119,7 @@ export default async function CityPage({ params }: Props) {
                   <GlowCard
                     icon={<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>}
                     title={sector}
-                    description={`Pacotes otimizados para atrair clientes valiosos no setor de ${sector.toLowerCase()} pela área de ${city.cityName}.`}
+                    description={`Estratégias para fazer sua empresa de ${sector.toLowerCase()} ser a primeira opção na região de ${city.cityName}.`}
                   />
                 </SectionWrapper>
               ))}
@@ -136,12 +136,12 @@ export default async function CityPage({ params }: Props) {
             
             <div className={styles.faqList}>
               <div className={styles.faqItem}>
-                <h3>A agência fica em {city.cityName}?</h3>
-                <p>Nossa engenharia digital atende o Brasil todo de forma remota, mas temos a inteligência de mercado estruturada para o público de {city.cityName}.</p>
+                <h3>A agência tem escritório em {city.cityName}?</h3>
+                <p>Atendemos clientes no Brasil todo de forma 100% online, mas conhecemos as estratégias que funcionam especificamente para o público de {city.cityName}.</p>
               </div>
               <div className={styles.faqItem}>
-                <h3>Quanto tempo para ranquear minha empresa localmente?</h3>
-                <p>Nossos sites já saem com SEO Técnico base. Com nosso pacote Local, você se destaca na região em 30 a 60 dias nas buscas do Google Maps.</p>
+                <h3>Em quanto tempo começo a aparecer no Google Maps?</h3>
+                <p>Seu site já é entregue configurado. Com o nosso serviço local, sua empresa começa a ganhar destaque e atrair contatos na região em cerca de 30 a 60 dias.</p>
               </div>
             </div>
           </div>

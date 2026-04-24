@@ -84,9 +84,9 @@ export function SimuladorClient() {
   return (
     <div className={styles.container}>
       <header className={styles.header}>
-        <h1 className={styles.title}>Diagnóstico de Presença</h1>
+        <h1 className={styles.title}>Descubra como trazer mais clientes</h1>
         <p className={styles.subtitle}>
-          Deixe-nos entender o momento da sua empresa para desenharmos o plano de dominação digital ideal.
+          Responda 3 perguntas rápidas e a gente mostra o que fazer pra sua empresa aparecer no Google.
         </p>
       </header>
 
@@ -118,7 +118,7 @@ export function SimuladorClient() {
           {step === 1 && (
             <div className={styles.stepEnter}>
               <div className={styles.questionGroup}>
-                <label className={styles.questionLabel}>Qual o seu principal objetivo hoje?</label>
+                <label className={styles.questionLabel}>O que mais te incomoda hoje?</label>
                 <div className={styles.radioGrid}>
                   
                   {/* Card 1 */}
@@ -130,8 +130,8 @@ export function SimuladorClient() {
                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
                     </div>
                     <div className={styles.radioContent}>
-                      <h4>Estar na 1ª página do Google</h4>
-                      <p>SEO Tradicional</p>
+                      <h4>Meu concorrente aparece no Google e eu não</h4>
+                      <p>Busca no Google</p>
                     </div>
                   </div>
 
@@ -144,8 +144,8 @@ export function SimuladorClient() {
                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                     </div>
                     <div className={styles.radioContent}>
-                      <h4>Dominar as buscas regionais</h4>
-                      <p>SEO Local (Maps)</p>
+                      <h4>Quando pesquisam "perto de mim", eu não apareço</h4>
+                      <p>Google Maps</p>
                     </div>
                   </div>
 
@@ -158,8 +158,8 @@ export function SimuladorClient() {
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2a10 10 0 1 0 10 10H12V2z"/><path d="M21.18 8.02c-1-2.3-2.85-4.17-5.16-5.18"/></svg>
                     </div>
                     <div className={styles.radioContent}>
-                      <h4>Recomendação nas IAs</h4>
-                      <p>GEO (ChatGPT, Gemini)</p>
+                      <h4>Quero que o ChatGPT recomende meu negócio</h4>
+                      <p>ChatGPT e IAs</p>
                     </div>
                   </div>
 
@@ -172,8 +172,8 @@ export function SimuladorClient() {
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
                     </div>
                     <div className={styles.radioContent}>
-                      <h4>Ter um site rápido e premium</h4>
-                      <p>Design de Alta Performance</p>
+                      <h4>Preciso de um site profissional (não tenho ou é antigo)</h4>
+                      <p>Criação de Site</p>
                     </div>
                   </div>
 
@@ -202,7 +202,7 @@ export function SimuladorClient() {
               </div>
 
               <div className={styles.questionGroup} style={{ marginTop: 'var(--space-6)' }}>
-                <label className={styles.questionLabel}>Qual o porte da sua empresa?</label>
+                <label className={styles.questionLabel}>Seu negócio é...</label>
                 <div className={styles.radioGrid}>
                   {['autonomo', 'pequena', 'media', 'grande'].map((porte) => (
                     <div 
@@ -212,7 +212,7 @@ export function SimuladorClient() {
                     >
                       <div className={styles.radioContent}>
                          <h4 style={{ textTransform: 'capitalize' }}>
-                           {porte === 'autonomo' ? 'Sou Autônomo / Profissional Liberal' : `${porte} Empresa`}
+                           {porte === 'autonomo' ? 'Trabalho sozinho ou com equipe pequena' : `Empresa ${porte}`}
                          </h4>
                       </div>
                     </div>
@@ -228,7 +228,7 @@ export function SimuladorClient() {
           {step === 3 && (
             <div className={styles.stepEnter}>
               <div className={styles.inputGroup}>
-                <label htmlFor="nome" className={styles.inputLabel}>Como podemos te chamar? *</label>
+                <label htmlFor="nome" className={styles.inputLabel}>Seu nome ou nome da empresa *</label>
                 <input
                   type="text"
                   id="nome"
@@ -242,7 +242,7 @@ export function SimuladorClient() {
               </div>
 
               <div className={styles.inputGroup}>
-                <label htmlFor="email" className={styles.inputLabel}>Seu melhor E-mail corporativo *</label>
+                <label htmlFor="email" className={styles.inputLabel}>Seu melhor E-mail *</label>
                 <input
                   type="email"
                   id="email"
@@ -289,7 +289,7 @@ export function SimuladorClient() {
               </Button>
             ) : (
               <Button type="submit" variant="primary" disabled={loading}>
-                Finalizar e Falar com Especialista
+                Ver meu plano personalizado
               </Button>
             )}
           </div>
