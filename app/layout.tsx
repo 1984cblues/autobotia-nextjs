@@ -91,7 +91,7 @@ export default function RootLayout({
         <meta name="theme-color" content="#1E40AF" />
       </head>
       <body>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false} forcedTheme="light">
           <NoiseBackground />
           <FloatingCursor />
 

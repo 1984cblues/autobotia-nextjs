@@ -33,28 +33,6 @@
     --space-7: 3rem;
     --space-8: 4rem;
   }
-
-  .dark {
-    /* Dark Mode (Brutalist Premium) */
-    --background: 0 0% 0%;
-    --foreground: 0 0% 100%;
-    --card: 0 0% 3%;
-    --card-foreground: 0 0% 100%;
-    --primary: 0 0% 100%;
-    --primary-foreground: 0 0% 0%;
-    --secondary: 0 0% 10%;
-    --secondary-foreground: 0 0% 100%;
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 55%;
-    --accent: 0 0% 20%;
-    --border: 0 0% 18%;
-    
-    --color-back: #000000;
-    --color-back-light: #111111;
-    --color-text: #ffffff;
-    --color-text-muted: #999999;
-    --color-accent: #ffffff;
-  }
 }
 
 @layer base {

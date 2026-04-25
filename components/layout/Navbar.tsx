@@ -5,8 +5,6 @@ import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 
-import { ThemeToggle } from '@/components/blog/theme-toggle'
-
 const links = [
   { label: 'Início', href: '/' },
   { label: 'Serviços', href: '/#servicos' },
@@ -79,7 +77,6 @@ export function Navbar() {
           </nav>
           
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <ThemeToggle />
             {/* Mobile toggle */}
             <button
               onClick={() => setOpen(!open)}
