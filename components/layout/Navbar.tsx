@@ -7,7 +7,17 @@ import { Menu, X } from 'lucide-react'
 
 const links = [
   { label: 'Início', href: '/' },
-  { label: 'Serviços', href: '/#servicos' },
+  { 
+    label: 'Serviços', 
+    href: '/#servicos',
+    subLinks: [
+      { label: 'Criação de Site', href: '/servicos/web-design' },
+      { label: 'Google Maps (SEO Local)', href: '/servicos/seo-local' },
+      { label: 'Blog que Traz Clientes', href: '/servicos/seo' },
+      { label: 'Aparecer no ChatGPT', href: '/servicos/geo' },
+      { label: 'Respostas do Google', href: '/servicos/aeo' },
+    ]
+  },
   { label: 'Portfólio', href: '/portfolio' },
   { label: 'Blog', href: '/blog' },
 ]
@@ -47,15 +57,39 @@ export function Navbar() {
         <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
           <nav style={{ display: 'flex', gap: '2rem', alignItems: 'center' }} className="hide-mobile">
             {links.map((l) => (
-              <Link
-                key={l.href}
-                href={l.href}
-                style={{ fontSize: '0.85rem', fontWeight: 500, color: 'hsl(var(--foreground) / 0.7)', letterSpacing: '0.02em', transition: 'color 0.2s' }}
-                onMouseEnter={e => (e.currentTarget.style.color = 'hsl(var(--foreground))')}
-                onMouseLeave={e => (e.currentTarget.style.color = 'hsl(var(--foreground) / 0.7)')}
-              >
-                {l.label}
-              </Link>
+              <div key={l.label} style={{ position: 'relative' }} className="nav-item">
+                <Link
+                  href={l.href}
+                  style={{ fontSize: '0.85rem', fontWeight: 500, color: 'hsl(var(--foreground) / 0.7)', letterSpacing: '0.02em', transition: 'color 0.2s', padding: '1rem 0' }}
+                  onMouseEnter={e => (e.currentTarget.style.color = 'hsl(var(--foreground))')}
+                  onMouseLeave={e => (e.currentTarget.style.color = 'hsl(var(--foreground) / 0.7)')}
+                >
+                  {l.label}
+                </Link>
+                {l.subLinks && (
+                  <div className="dropdown" style={{ 
+                    position: 'absolute', top: '100%', left: 0, 
+                    background: 'hsl(var(--background))', 
+                    border: '1px solid hsl(var(--border) / 0.2)', 
+                    borderRadius: 'var(--radius-md)', 
+                    padding: '0.5rem', 
+                    minWidth: '200px',
+                    display: 'none',
+                    flexDirection: 'column',
+                    gap: '0.5rem',
+                    boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
+                  }}>
+                    {l.subLinks.map(sub => (
+                      <Link key={sub.href} href={sub.href} style={{ fontSize: '0.8rem', padding: '0.5rem', color: 'hsl(var(--foreground) / 0.7)', transition: 'background 0.2s, color 0.2s', borderRadius: 'var(--radius-sm)' }}
+                        onMouseEnter={e => { e.currentTarget.style.background = 'hsl(var(--muted))'; e.currentTarget.style.color = 'hsl(var(--foreground))' }}
+                        onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'hsl(var(--foreground) / 0.7)' }}
+                      >
+                        {sub.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
             ))}
             <Link
               href="/simulador"
