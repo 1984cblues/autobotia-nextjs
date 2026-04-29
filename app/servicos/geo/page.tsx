@@ -26,6 +26,7 @@ export default function GeoPage() {
       features={features}
       iconName="Brain"
       ctaText="Quero aparecer nas IAs"
+      heroImage="/assets/servicos/geo-hero.png"
     />
   )
 }

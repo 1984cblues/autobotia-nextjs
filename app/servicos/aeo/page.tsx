@@ -26,6 +26,7 @@ export default function AeoPage() {
       features={features}
       iconName="Search"
       ctaText="Quero ser a resposta do Google"
+      heroImage="/assets/servicos/aeo-hero.png"
     />
   )
 }

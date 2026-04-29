@@ -26,6 +26,7 @@ export default function SeoLocalPage() {
       features={features}
       iconName="MapPin"
       ctaText="Quero aparecer no Maps"
+      heroImage="/assets/servicos/seo-local-hero.png"
     />
   )
 }

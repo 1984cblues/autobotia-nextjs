@@ -26,6 +26,7 @@ export default function SeoPage() {
       features={features}
       iconName="BookOpen"
       ctaText="Quero clientes orgânicos"
+      heroImage="/assets/servicos/seo-hero.png"
     />
   )
 }

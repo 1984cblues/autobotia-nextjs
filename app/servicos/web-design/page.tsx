@@ -26,6 +26,7 @@ export default function WebDesignPage() {
       features={features}
       iconName="Monitor"
       ctaText="Quero um orçamento grátis"
+      heroImage="/assets/servicos/web-design-hero.png"
     />
   )
 }
