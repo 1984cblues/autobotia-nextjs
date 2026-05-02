@@ -1,0 +1,264 @@
+{
+    "meta": {
+        "title": "Waso Strategy - Consultoria Estratégica",
+        "description": "Waso Strategy é um template profissional de consultoria de negócios.",
+        "author": "Tooplate"
+    },
+    "header": {
+        "hours": "Seg-Sex 10:00-19:00",
+        "phone": "11 99999-9999",
+        "phone_link": "tel: 5511999999999",
+        "social": [
+            {
+                "platform": "facebook",
+                "url": "https://facebook.com/tooplate",
+                "icon": "bi-facebook"
+            },
+            {
+                "platform": "pinterest",
+                "url": "https://pinterest.com/tooplate",
+                "icon": "bi-pinterest"
+            },
+            {
+                "platform": "twitter",
+                "url": "https://twitter.com/minthu",
+                "icon": "bi-twitter"
+            },
+            {
+                "platform": "youtube",
+                "url": "https://www.youtube.com/tooplate",
+                "icon": "bi-youtube"
+            }
+        ]
+    },
+    "navbar": {
+        "brand_first": "Waso",
+        "brand_second": "Estratégia",
+        "menu": [
+            {
+                "number": "01",
+                "label": "Início",
+                "link": "#section_1"
+            },
+            {
+                "number": "02",
+                "label": "Sobre",
+                "link": "#section_2"
+            },
+            {
+                "number": "03",
+                "label": "Serviços",
+                "link": "#section_3"
+            },
+            {
+                "number": "04",
+                "label": "Projetos",
+                "link": "#section_4"
+            },
+            {
+                "number": "05",
+                "label": "Contato",
+                "link": "#section_5"
+            }
+        ]
+    },
+    "hero": {
+        "slides": [
+            {
+                "small_title": "Apresentando Waso Strategy",
+                "counter": "01/05",
+                "title_prefix": "Explore",
+                "title_highlight": "novas ideias",
+                "title_suffix": "para seu negócio",
+                "btn_text": "Começar Agora",
+                "btn_link": "#section_2",
+                "video_link": "https://www.youtube.com/watch?v=AYaHuZ4BB6Y",
+                "image": "images/slide/christina-wocintechchat-com-NDoVgcS_lZM-unsplash.jpg",
+                "active": true
+            },
+            {
+                "small_title": "Apoio a Novos Projetos",
+                "counter": "01/05",
+                "title_prefix": "Planejamento Estratégico para seu",
+                "title_highlight": "próximo projeto",
+                "title_suffix": "",
+                "btn_text": "Explorar Capacidades",
+                "btn_link": "#section_2",
+                "video_link": "https://www.youtube.com/watch?v=VStvZjykQ00",
+                "image": "images/slide/jason-goodman-0K7GgiA8lVE-unsplash.jpg",
+                "active": false
+            }
+        ]
+    },
+    "about": {
+        "main_image": "images/peter-jones-WZROBIlY8Rg-unsplash.jpg",
+        "ceo_name": "William Smith, CEO",
+        "ceo_message": "Você pode usar livremente a Waso Strategy para o projeto do seu site.",
+        "section_counter": "02/05",
+        "title": "Agência de Consultoria",
+        "subtitle": "Ajudando pequenas empresas desde 2001",
+        "description": "Waso Strategy é um modelo HTML Bootstrap 5 para o seu negócio. Você pode usar este modelo para qualquer finalidade.",
+        "donation_text": "Você pode apoiar com uma pequena doação via PayPal visitando nossa",
+        "contact_link_text": "página de contato",
+        "contact_link_url": "https://www.tooplate.com/contact",
+        "card_1": {
+            "title": "Estamos expandindo negócios",
+            "btn_text": "Junte-se a nós",
+            "btn_link": "#section_3"
+        },
+        "card_2": {
+            "title": "Como nos conheceu?",
+            "text": "Lorem ipsum dolor sit consectetur"
+        }
+    },
+    "services": {
+        "section_counter": "03/05",
+        "main_title": "Como podemos ajudar?",
+        "tabs": [
+            {
+                "id": "nav-business",
+                "label_title": "Consultoria de Negócios",
+                "label_desc": "Soluções completas para gestão empresarial",
+                "active": true,
+                "content_image": "images/services/young-entrepreneurs-mature-investor-watching-presentation-discussing-project.jpg",
+                "content_title": "Introdução à Consultoria de Negócios",
+                "content_desc": "Oferecemos análise detalhada e estratégias personalizadas para impulsionar o crescimento da sua empresa no mercado competitivo atual.",
+                "list": [
+                    "Ajudando pequenas empresas",
+                    "Análise de mercado",
+                    "Estratégia e Gestão Empresarial"
+                ]
+            },
+            {
+                "id": "nav-strategy",
+                "label_title": "Planejamento Estratégico",
+                "label_desc": "Definindo o futuro do seu empreendimento",
+                "active": false,
+                "content_image": "images/services/startup-leader-drawing-flowchart-board-discussing-project.jpg",
+                "content_title": "Planejamento Estratégico",
+                "content_row": true,
+                "cols": [
+                    "Desenvolvemos roteiros claros para alcançar seus objetivos de longo prazo com eficiência e segurança.",
+                    "Nossa metodologia foca na identificação de oportunidades e mitigação de riscos operacionais."
+                ]
+            },
+            {
+                "id": "nav-video",
+                "label_title": "Conteúdo de Vídeo",
+                "label_desc": "Produção audiovisual profissional",
+                "active": false,
+                "content_image": "images/services/portrait-smiling-african-american-young-woman-holding-movie-production-blackboard.jpg",
+                "content_title": "Conteúdo de Vídeo",
+                "content_desc": "Criação de conteúdo visual impactante para engajar seu público e fortalecer sua marca nas redes sociais."
+            }
+        ]
+    },
+    "projects": {
+        "section_counter": "04/05",
+        "main_title": "Marcas que construímos",
+        "items": [
+            {
+                "layout_class": "col-lg-4 col-12",
+                "link": "project-detail.html",
+                "image": "images/projects/pj-gal-szabo-CIXXIWxxec4-unsplash.jpg",
+                "category": "Negócios",
+                "title": "Grupo MCL"
+            },
+            {
+                "layout_class": "col-lg-4 col-12",
+                "link": "project-detail.html",
+                "image": "images/projects/team-fredi-FN3vmVee2sI-unsplash.jpg",
+                "category": "Planejamento",
+                "title": "Fredi"
+            },
+            {
+                "layout_class": "col-lg-4 col-12",
+                "link": "project-detail.html",
+                "image": "images/projects/vmsign-x9yGe7wnvKQ-unsplash.jpg",
+                "category": "Vídeo",
+                "title": "Banana"
+            },
+            {
+                "layout_class": "col-lg-8 col-12",
+                "link": "project-detail.html",
+                "image": "images/projects/evangeline-shaw-nwLTVwb7DbU-unsplash.jpg",
+                "category": "Vídeo",
+                "title": "Conferência"
+            },
+            {
+                "layout_class": "col-lg-4 col-12",
+                "link": "project-detail.html",
+                "image": "images/projects/tangerine-newt-AKH4OVEmILc-unsplash.jpg",
+                "category": "Negócios",
+                "title": "Maldon"
+            }
+        ]
+    },
+    "project_page": {
+        "hero": {
+            "title": "Detalhes do Projeto",
+            "subtitle": "Conferência"
+        },
+        "intro": {
+            "title": "Marcas que criamos até agora",
+            "description_1": "Waso Strategy é um template profissional. Você pode usá-lo para qualquer propósito.",
+            "description_2": "Você pode apoiar com uma pequena doação.",
+            "link_text": "página de contato",
+            "link_url": "https://www.tooplate.com/contact"
+        },
+        "items": [
+            {
+                "image": "images/projects/pj-gal-szabo-CIXXIWxxec4-unsplash.jpg",
+                "title": "Formas de iniciar um projeto",
+                "text_1": "Mauris in convallis nunc, non facilisis arcu. Nunc sapien interdum at diam.",
+                "text_2": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            },
+            {
+                "image": "images/projects/team-fredi-FN3vmVee2sI-unsplash.jpg",
+                "title": "Estratégias para o próximo passo",
+                "text_1": "Mauris in convallis nunc, non facilisis arcu. Nunc sapien interdum at diam.",
+                "text_2": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            },
+            {
+                "image": "images/projects/vmsign-x9yGe7wnvKQ-unsplash.jpg",
+                "title": "Equipe Banana",
+                "text_1": "Mauris in convallis nunc, non facilisis arcu.",
+                "layout_col": "col-lg-4 col-12"
+            },
+            {
+                "image": "images/projects/elena-baidak-pz69kY0UQuQ-unsplash.jpg",
+                "title": "Hora da Reunião",
+                "text_1": "Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit.",
+                "layout_col": "col-lg-4 col-12 my-lg-0 my-5"
+            },
+            {
+                "image": "images/projects/tangerine-newt-AKH4OVEmILc-unsplash.jpg",
+                "title": "Trabalho Avocado",
+                "text_1": "Você pode querer visitar o blog Too CSS para as últimas coleções.",
+                "layout_col": "col-lg-4 col-12"
+            }
+        ]
+    },
+    "contact": {
+        "section_counter": "05/05",
+        "title": "Diga Olá",
+        "form": {
+            "name_placeholder": "Seu Nome",
+            "email_placeholder": "seu@email.com",
+            "message_placeholder": "Mensagem",
+            "btn_text": "Enviar"
+        },
+        "address": "Av. Paulista, 1000 - São Paulo, SP",
+        "phone": "11 99999-9999",
+        "phone_link": "tel: 5511999999999",
+        "email": "contato@empresa.com.br",
+        "email_link": "mailto:contato@empresa.com.br",
+        "map_url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4063.103580426464!2d-83.0264337484065!3d42.33402597908653!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x883b2cce05ddf4f1%3A0xcc0559eb3fda00c9!2sDetroit%20Riverwalk%2C%20Detroit%2C%20MI!5e1!3m2!1sen!2sus!4v1657814406289!5m2!1sen!2sus"
+    },
+    "footer": {
+        "copyright": "Copyright © 2036 Waso Strategy Ltda.",
+        "design_text": "Template HTML desenhado por",
+        "design_link_text": "Tooplate",
+        "design_link_url": "https://www.tooplate.com/"
+    }
+}

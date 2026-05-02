@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refrigeração Profissional | Instalação e Manutenção de Ar-Condicionado</title>
+    <meta name="description"
+        content="Serviços especializados em refrigeração para residências e empresas. Instalação, manutenção e conserto de ar-condicionado.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Canvas para efeito de neve -->
+    <canvas id="snow-particles"></canvas>
+
+    <!-- Header/Navegação -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <span style="font-size: 24px; font-weight: 700; color: var(--color-primary);">❄️ RefriPro</span>
+            </div>
+            <nav class="nav">
+                <a href="#hero">Início</a>
+                <a href="#quem-somos">Quem Somos</a>
+                <a href="#servicos">Serviços</a>
+                <a href="#depoimentos">Depoimentos</a>
+                <a href="#contato">Contato</a>
+            </nav>
+            <a href="tel:+5511999999999" class="btn-header">Ligue Agora</a>
+        </div>
+    </header>
+
+    <!-- Hero Section com Sequência de Imagens -->
+    <section id="hero" class="hero"
+        style="background-image: url('images/hero-banner.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
+        <!-- canvas removido -->
+        <div class="hero-content">
+            <h1 class="hero-title">Climatização Profissional</h1>
+            <p class="hero-subtitle">Soluções completas em refrigeração para seu conforto</p>
+            <div class="hero-cta">
+                <a href="#contato" class="btn-primary">Solicite um Orçamento Grátis</a>
+                <a href="tel:+5511999999999" class="btn-secondary">Ligue Agora: (11) 99999-9999</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Role para descobrir</span>
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- Quem Somos -->
+    <section id="quem-somos" class="section quem-somos">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Sobre Nós</span>
+                <h2>Especialistas em Refrigeração</h2>
+            </div>
+            <div class="content-grid">
+                <div class="content-text">
+                    <p class="lead">Com mais de 10 anos de experiência, oferecemos soluções completas em climatização
+                        para residências e empresas.</p>
+                    <p>Nossa equipe é formada por técnicos certificados e qualificados, prontos para atender suas
+                        necessidades com agilidade e profissionalismo.</p>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <span class="stat-number">500</span>
+                            <span class="stat-label">Clientes Satisfeitos</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">24</span>
+                            <span class="stat-label">Atendimento</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">100</span>
+                            <span class="stat-label">Garantia %</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-image">
+                    <img src="images/refrigeracao/quem_somos_new.jpeg?v=4"
+                        alt="Profissional instalando ar-condicionado">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Serviços -->
+    <section id="servicos" class="section servicos">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">O Que Fazemos</span>
+                <h2>Nossos Serviços</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">❄️</div>
+                    <h3>Instalação</h3>
+                    <p>Instalação profissional de ar-condicionado residencial e comercial com garantia de qualidade.</p>
+                    <a href="#contato" class="service-link">Solicitar orçamento →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔧</div>
+                    <h3>Manutenção</h3>
+                    <p>Manutenção preventiva e corretiva para prolongar a vida útil do seu equipamento.</p>
+                    <a href="#contato" class="service-link">Agendar manutenção →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⚡</div>
+                    <h3>Conserto</h3>
+                    <p>Diagnóstico e reparo rápido de falhas em sistemas de refrigeração.</p>
+                    <a href="#contato" class="service-link">Solicitar reparo →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🧹</div>
+                    <h3>Higienização</h3>
+                    <p>Limpeza profunda para garantir ar puro e saudável para sua família ou empresa.</p>
+                    <a href="#contato" class="service-link">Agendar higienização →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🏢</div>
+                    <h3>Projetos Comerciais</h3>
+                    <p>Soluções customizadas para empresas, indústrias e estabelecimentos comerciais.</p>
+                    <a href="#contato" class="service-link">Falar com especialista →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🚨</div>
+                    <h3>Atendimento 24h</h3>
+                    <p>Suporte emergencial disponível a qualquer hora para resolver sua urgência.</p>
+                    <a href="tel:+5511999999999" class="service-link">Ligar agora →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Processo de Trabalho -->
+    <section class="section processo">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Como Funciona</span>
+                <h2>Processo Simples e Eficiente</h2>
+            </div>
+            <div class="processo-grid">
+                <div class="processo-step">
+                    <div class="step-number">01</div>
+                    <h3>Contato</h3>
+                    <p>Entre em contato conosco pelo telefone, WhatsApp ou formulário</p>
+                </div>
+                <div class="processo-step">
+                    <div class="step-number">02</div>
+                    <h3>Avaliação</h3>
+                    <p>Agendamos uma visita técnica para avaliar suas necessidades</p>
+                </div>
+                <div class="processo-step">
+                    <div class="step-number">03</div>
+                    <h3>Orçamento</h3>
+                    <p>Apresentamos um orçamento transparente e detalhado</p>
+                </div>
+                <div class="processo-step">
+                    <div class="step-number">04</div>
+                    <h3>Execução</h3>
+                    <p>Realizamos o serviço com qualidade e dentro do prazo</p>
+                </div>
+            </div>
+            <div class="processo-image">
+                <img src="images/refrigeracao/processo_new.jpeg?v=4" alt="Profissional realizando manutenção">
+            </div>
+        </div>
+    </section>
+
+    <!-- Depoimentos -->
+    <section id="depoimentos" class="section depoimentos">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Avaliações</span>
+                <h2>O Que Nossos Clientes Dizem</h2>
+            </div>
+            <div class="depoimentos-grid">
+                <div class="depoimento-card">
+                    <div class="rating">★★★★★</div>
+                    <p class="depoimento-text">"Excelente atendimento! Instalaram meu ar-condicionado com muito
+                        profissionalismo. Recomendo!"</p>
+                    <div class="depoimento-autor">
+                        <strong>Maria Silva</strong>
+                        <span>Cliente Residencial</span>
+                    </div>
+                </div>
+                <div class="depoimento-card">
+                    <div class="rating">★★★★★</div>
+                    <p class="depoimento-text">"Precisei de um atendimento emergencial e foram super rápidos. Problema
+                        resolvido em poucas horas!"</p>
+                    <div class="depoimento-autor">
+                        <strong>João Santos</strong>
+                        <span>Cliente Comercial</span>
+                    </div>
+                </div>
+                <div class="depoimento-card">
+                    <div class="rating">★★★★★</div>
+                    <p class="depoimento-text">"Preço justo e serviço de qualidade. Já são 3 anos fazendo a manutenção
+                        preventiva com eles."</p>
+                    <div class="depoimento-autor">
+                        <strong>Ana Costa</strong>
+                        <span>Cliente Residencial</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato -->
+    <section id="contato" class="section contato">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Fale Conosco</span>
+                <h2>Solicite um Orçamento</h2>
+            </div>
+            <div class="contato-grid">
+                <div class="contato-info">
+                    <h3>Entre em Contato</h3>
+                    <div class="info-item">
+                        <span class="info-icon">📞</span>
+                        <div>
+                            <strong>Telefone</strong>
+                            <a href="tel:+5511999999999">(11) 99999-9999</a>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">📧</span>
+                        <div>
+                            <strong>E-mail</strong>
+                            <a href="mailto:contato@refripro.com">contato@refripro.com</a>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">⏰</span>
+                        <div>
+                            <strong>Horário</strong>
+                            <p>Seg-Sex: 8h-18h<br>Sáb: 8h-12h<br>Emergências 24h</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contato-form">
+                    <form id="form-contato">
+                        <div class="form-group">
+                            <input type="text" name="nome" placeholder="Seu nome completo" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" name="telefone" placeholder="Seu telefone" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Seu e-mail" required>
+                        </div>
+                        <div class="form-group">
+                            <select name="servico" required>
+                                <option value="">Selecione o serviço</option>
+                                <option value="instalacao">Instalação</option>
+                                <option value="manutencao">Manutenção</option>
+                                <option value="conserto">Conserto</option>
+                                <option value="higienizacao">Higienização</option>
+                                <option value="comercial">Projeto Comercial</option>
+                                <option value="emergencia">Atendimento Emergencial</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="mensagem" placeholder="Descreva sua necessidade" rows="4"></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">Enviar Solicitação</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Refrigeração Profissional. Todos os direitos reservados.</p>
+            <div class="footer-social">
+                <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <div class="footer-links">
+                <a href="#politica">Política de Privacidade</a>
+                <a href="#termos">Termos de Uso</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/5511999999999" target="_blank" class="whatsapp-btn" title="Fale pelo WhatsApp">
+        <i class="fab fa-whatsapp" style="font-size: 32px;"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

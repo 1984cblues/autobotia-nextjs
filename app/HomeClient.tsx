@@ -34,10 +34,11 @@ const services = [
 ]
 
 const works = [
-  { title: 'ALEX OLIVEIRA', subtitle: 'Advocacia Especializada', image: '/works/1.webp', year: '2025' },
-  { title: 'VENDMIX', subtitle: 'Marketplace B2B', image: '/works/2.webp', year: '2025' },
-  { title: 'CLÍNICA PREMIUM', subtitle: 'Saúde e Estética', image: '/works/3.webp', year: '2024' },
-  { title: 'RESTAURANTE AROMA', subtitle: 'Alta Gastronomia', image: '/works/4.webp', year: '2024' },
+  { title: 'AGRONEGÓCIO', subtitle: 'Soluções para o Campo', image: '/works/agronegocio.webp', year: '2025', href: '/agronegocio/index.html' },
+  { title: 'CLEAN WORK', subtitle: 'Limpeza e Conservação', image: '/works/clean-work.webp', year: '2025', href: '/clean-work' },
+  { title: 'CONCRETO', subtitle: 'Engenharia Civil', image: '/works/concreto.webp', year: '2024', href: '/concreto' },
+  { title: 'REFRIGERAÇÃO', subtitle: 'Climatização de Ambientes', image: '/works/refrigeracao.webp', year: '2024', href: '/refrigeracao/index.html' },
+  { title: 'WASO STRATEGY', subtitle: 'Consultoria Empresarial', image: '/works/waso-strategy.webp', year: '2025', href: '/waso-strategy/index.html' },
 ]
 
 const testimonials = [
@@ -108,7 +109,7 @@ export function HomeClient() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1px', background: 'hsl(var(--border) / 0.1)' }}>
             {works.map((w, i) => (
               <FadeIn key={i} delay={i * 60}>
-                <div style={{ background: 'hsl(var(--background))', overflow: 'hidden', position: 'relative', cursor: 'pointer' }}
+                <Link href={w.href} style={{ display: 'block', background: 'hsl(var(--background))', overflow: 'hidden', position: 'relative', cursor: 'pointer' }}
                   onMouseEnter={e => { const img = e.currentTarget.querySelector('img') as HTMLImageElement; if (img) img.style.transform = 'scale(1.04)' }}
                   onMouseLeave={e => { const img = e.currentTarget.querySelector('img') as HTMLImageElement; if (img) img.style.transform = 'scale(1)' }}>
                   <div style={{ aspectRatio: '4/3', overflow: 'hidden', position: 'relative' }}>
@@ -124,7 +125,7 @@ export function HomeClient() {
                       <span style={{ fontSize: '0.7rem', color: 'hsl(var(--foreground) / 0.25)' }}>{w.year}</span>
                     </div>
                   </div>
-                </div>
+                </Link>
               </FadeIn>
             ))}
           </div>
