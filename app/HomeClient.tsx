@@ -106,10 +106,10 @@ export function HomeClient() {
               Ver Todos <ArrowRight size={14} />
             </Link>
           </FadeIn>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1px', background: 'hsl(var(--border) / 0.1)' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
             {works.map((w, i) => (
               <FadeIn key={i} delay={i * 60}>
-                <Link href={w.href} style={{ display: 'block', background: 'hsl(var(--background))', overflow: 'hidden', position: 'relative', cursor: 'pointer' }}
+                <Link href={w.href} style={{ display: 'block', background: 'hsl(var(--background))', overflow: 'hidden', position: 'relative', cursor: 'pointer', border: '1px solid hsl(var(--border) / 0.1)' }}
                   onMouseEnter={e => { const img = e.currentTarget.querySelector('img') as HTMLImageElement; if (img) img.style.transform = 'scale(1.04)' }}
                   onMouseLeave={e => { const img = e.currentTarget.querySelector('img') as HTMLImageElement; if (img) img.style.transform = 'scale(1)' }}>
                   <div style={{ aspectRatio: '4/3', overflow: 'hidden', position: 'relative' }}>
