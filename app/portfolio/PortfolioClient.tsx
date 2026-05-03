@@ -7,36 +7,49 @@ import { ArrowLeft, ArrowUpRight } from 'lucide-react'
 
 const projects = [
   {
-    title: 'Alex Oliveira',
-    category: 'Advocacia | Google Maps',
-    description: 'Site para escritório de advocacia focado em atrair clientes da região e passar confiança profissional.',
-    image: '/works/1.webp',
+    title: 'Agronegócio',
+    category: 'Agronegócio | Vendas',
+    description: 'Plataforma robusta para o setor agrícola, focada em exposição de maquinários e sementes com alta performance.',
+    image: '/works/agronegocio.webp',
     year: '2025',
-    tags: ['Site Profissional', 'Google Maps', 'Design Premium'],
+    tags: ['Site Profissional', 'Setor Agrícola', 'Design Premium'],
+    href: '/agronegocio/index.html'
   },
   {
-    title: 'Vendmix',
-    category: 'Vendas B2B',
-    description: 'Site de vendas para empresas, rápido e feito para aparecer no topo das buscas por produtos.',
-    image: '/works/2.webp',
+    title: 'Clean Work',
+    category: 'Serviços | Conservação',
+    description: 'Site institucional para empresa de limpeza técnica e conservação, focado em geração de leads comerciais.',
+    image: '/works/clean-work.webp',
     year: '2025',
-    tags: ['Vendas Online', 'Rápido', 'Fácil de usar'],
+    tags: ['Geração de Leads', 'Serviços B2B', 'Limpeza'],
+    href: '/clean-work'
   },
   {
-    title: 'Clínica Premium',
-    category: 'Saúde & Estética',
-    description: 'Página de alta conversão para clínica, focada em transformar visitantes em agendamentos de consulta.',
-    image: '/works/3.webp',
+    title: 'Concreto',
+    category: 'Engenharia | Civil',
+    description: 'Landing page para construtora e engenharia, destacando solidez e projetos de infraestrutura de grande porte.',
+    image: '/works/concreto.webp',
     year: '2024',
-    tags: ['Página de Vendas', 'Agendamentos', 'Foco em Celular'],
+    tags: ['Engenharia', 'Construção Civil', 'Portfólio'],
+    href: '/concreto'
   },
   {
-    title: 'Restaurante Aroma',
-    category: 'Gastronomia',
-    description: 'Site e presença no Google Maps que triplicou o número de clientes que acham o restaurante pelo celular.',
-    image: '/works/4.webp',
+    title: 'Refrigeração',
+    category: 'Manutenção | Técnica',
+    description: 'Site especializado em climatização e sistemas de refrigeração, otimizado para busca local por técnicos.',
+    image: '/works/refrigeracao.webp',
     year: '2024',
-    tags: ['Google Maps', 'Localização', 'Site Bonito'],
+    tags: ['Busca Local', 'Manutenção', 'Otimizado'],
+    href: '/refrigeracao/index.html'
+  },
+  {
+    title: 'Waso Strategy',
+    category: 'Consultoria | Business',
+    description: 'Portal de consultoria estratégica para negócios, com layout minimalista que comunica autoridade e expertise.',
+    image: '/works/waso-strategy.webp',
+    year: '2025',
+    tags: ['Consultoria', 'Estratégia', 'Brutalismo'],
+    href: '/waso-strategy/index.html'
   },
 ]
 
@@ -104,10 +117,10 @@ export default function PortfolioClient() {
                     ))}
                   </div>
                   
-                  <Link href={`/portfolio/${p.title.toLowerCase().replace(' ', '-')}`} 
+                  <Link href={p.href} 
                     style={{ display: 'inline-flex', alignItems: 'center', gap: '0.6rem', fontSize: '0.85rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '2px solid hsl(var(--foreground))', color: 'hsl(var(--foreground))', paddingBottom: '0.4rem', transition: 'gap 0.2s' }}
                     className="view-project-link">
-                    Ver detalhes <ArrowUpRight size={18} />
+                    Visitar Site <ArrowUpRight size={18} />
                   </Link>
                 </div>
               </motion.div>
