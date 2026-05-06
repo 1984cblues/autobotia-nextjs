@@ -18,7 +18,8 @@ const links = [
       { label: 'Respostas do Google', href: '/servicos/aeo' },
     ]
   },
-  { label: 'Estudos de Caso', href: '/portfolio' },
+  { label: 'Portfólio', href: '/portfolio' },
+  { label: 'Estudos de Caso', href: '/estudos-de-caso' },
   { label: 'Blog', href: '/blog' },
 ]
 
