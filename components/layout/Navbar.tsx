@@ -18,7 +18,7 @@ const links = [
       { label: 'Respostas do Google', href: '/servicos/aeo' },
     ]
   },
-  { label: 'Portfólio', href: '/portfolio' },
+  { label: 'Estudos de Caso', href: '/portfolio' },
   { label: 'Blog', href: '/blog' },
 ]
 
@@ -94,19 +94,27 @@ export function Navbar() {
             <Link
               href="/simulador"
               style={{
-                fontSize: '0.8rem',
-                fontWeight: 700,
-                letterSpacing: '0.08em',
+                fontSize: '0.75rem',
+                fontWeight: 800,
+                letterSpacing: '0.1em',
                 textTransform: 'uppercase',
-                padding: '0.6rem 1.5rem',
-                border: '1px solid hsl(var(--border))',
-                color: 'hsl(var(--foreground))',
-                transition: 'all 0.2s',
+                padding: '0.7rem 1.8rem',
+                background: 'hsl(var(--primary))',
+                color: 'hsl(var(--primary-foreground))',
+                borderRadius: '4px',
+                transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
+                boxShadow: '0 4px 15px hsl(var(--primary) / 0.25)',
               }}
-              onMouseEnter={e => { e.currentTarget.style.background = 'hsl(var(--foreground))'; e.currentTarget.style.color = 'hsl(var(--background))' }}
-              onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'hsl(var(--foreground))' }}
+              onMouseEnter={e => { 
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.boxShadow = '0 6px 20px hsl(var(--primary) / 0.4)';
+              }}
+              onMouseLeave={e => { 
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 4px 15px hsl(var(--primary) / 0.25)';
+              }}
             >
-              Falar Agora
+              Simulador
             </Link>
           </nav>
           
@@ -141,8 +149,19 @@ export function Navbar() {
                 </Link>
               ))}
               <Link href="/simulador" onClick={() => setOpen(false)}
-                style={{ fontSize: '0.85rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', padding: '0.85rem 0', borderTop: '1px solid hsl(var(--border) / 0.1)', color: 'hsl(var(--foreground))', marginTop: '0.5rem' }}>
-                Solicitar Orçamento →
+                style={{ 
+                  fontSize: '0.85rem', 
+                  fontWeight: 800, 
+                  letterSpacing: '0.1em', 
+                  textTransform: 'uppercase', 
+                  padding: '1rem', 
+                  background: 'hsl(var(--primary))',
+                  color: 'hsl(var(--primary-foreground))',
+                  textAlign: 'center',
+                  borderRadius: '4px',
+                  marginTop: '1rem' 
+                }}>
+                Simulador →
               </Link>
             </div>
           </motion.div>
