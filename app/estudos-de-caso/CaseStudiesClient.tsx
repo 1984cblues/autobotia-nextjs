@@ -101,7 +101,7 @@ export default function CaseStudiesClient() {
                     {c.scenario}
                   </p>
                   
-                  <div style={{ background: 'hsl(var(--foreground) / 0.03)', padding: '1.5rem', borderRadius: '8px', borderLeft: \`4px solid \${c.color}\` }}>
+                  <div style={{ background: 'hsl(var(--foreground) / 0.03)', padding: '1.5rem', borderRadius: '8px', borderLeft: `4px solid ${c.color}` }}>
                     <p style={{ fontSize: '0.9rem', color: 'hsl(var(--muted-foreground))', fontStyle: 'italic', lineHeight: 1.6 }}>
                       "{c.stats}"
                     </p>
