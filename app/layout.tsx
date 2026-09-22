@@ -77,7 +77,10 @@ export const metadata: Metadata = {
     canonical: 'https://www.autobotia.com.br',
   },
   verification: {
-    google: 'googlee129306cdf2e55db',
+    google: [
+      'googlee129306cdf2e55db',
+      '_fkpdRz9_vu85M-AXrjn-uqEnt0UshQ0tZYgD5Q_lhs',
+    ],
   },
 }
 
