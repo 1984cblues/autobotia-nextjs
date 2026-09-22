@@ -4,8 +4,7 @@ export const SimuladorSchema = z.object({
   objetivo: z.enum(
     ['seo_tradicional', 'seo_local', 'geo', 'cricao_site'],
     {
-      required_error: 'Por favor, selecione seu principal objetivo.',
-      invalid_type_error: 'Objetivo inválido selecionado.',
+      message: 'Por favor, selecione seu principal objetivo.',
     }
   ),
   siteUrl: z
@@ -16,7 +15,7 @@ export const SimuladorSchema = z.object({
   porte: z.enum(
     ['autonomo', 'pequena', 'media', 'grande'],
     {
-      required_error: 'Por favor, selecione o porte da sua empresa.',
+      message: 'Por favor, selecione o porte da sua empresa.',
     }
   ),
   nome: z

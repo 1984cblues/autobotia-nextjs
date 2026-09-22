@@ -47,7 +47,7 @@ export default async function BlogIndexPage({
   searchParams: Promise<{ tag?: string }>;
 }) {
   const resolvedSearchParams = await searchParams;
-  const allPages = blogSource.getPages() as BlogPage[];
+  const allPages = (blogSource.getPages() as unknown) as BlogPage[];
   const sortedBlogs = allPages.sort((a, b) => {
     const dateA = new Date(a.data.date).getTime();
     const dateB = new Date(b.data.date).getTime();

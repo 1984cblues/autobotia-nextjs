@@ -21,6 +21,19 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
+interface BlogPostData {
+  title: string;
+  description?: string;
+  date: string;
+  tags?: string[];
+  featured?: boolean;
+  readTime?: string;
+  author?: string;
+  authorImage?: string;
+  thumbnail?: string;
+  body: React.ComponentType;
+}
+
 const blogSource = loader({
   baseUrl: "/blog",
   source: toFumadocsSource(docs as any, meta as any),
@@ -41,7 +54,7 @@ export default async function BlogPost({ params }: PageProps) {
     notFound();
   }
 
-  const page = blogSource.getPage([slug]);
+  const page = (blogSource.getPage([slug]) as unknown) as { data: BlogPostData } | null;
 
   if (!page) {
     notFound();

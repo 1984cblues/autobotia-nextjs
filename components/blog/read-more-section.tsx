@@ -43,7 +43,7 @@ export function ReadMoreSection({
   currentSlug,
   currentTags = [],
 }: ReadMoreSectionProps) {
-  const allPages = blogSource.getPages() as BlogPage[];
+  const allPages = (blogSource.getPages() as unknown) as BlogPage[];
 
   const currentUrl = `/blog/${currentSlug.join("/")}`;
 

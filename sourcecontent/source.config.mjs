@@ -6,7 +6,6 @@ import {
 } from "fumadocs-mdx/config";
 import { z } from "zod";
 var source_config_default = defineConfig({
-  lastModifiedTime: "git",
   mdxOptions: {
     providerImportSource: "@/mdx-components"
   }

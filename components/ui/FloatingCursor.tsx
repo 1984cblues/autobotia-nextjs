@@ -5,8 +5,14 @@ import { useEffect, useRef, useState } from 'react'
 export function FloatingCursor() {
   const cursorRef = useRef<HTMLDivElement>(null)
   const [active, setActive] = useState(false)
+  const [enabled, setEnabled] = useState(false)
 
   useEffect(() => {
+    // Only enable on devices with a fine pointer (desktop mouse/trackpad)
+    const mediaQuery = window.matchMedia('(pointer: fine)')
+    if (!mediaQuery.matches) return
+
+    setEnabled(true)
     const el = cursorRef.current
     if (!el) return
 
@@ -14,27 +20,38 @@ export function FloatingCursor() {
       el.style.transform = `translate(${e.clientX - 10}px, ${e.clientY - 10}px)`
     }
 
-    const onEnter = () => setActive(true)
-    const onLeave = () => setActive(false)
+    // High performance event delegation
+    const onOver = (e: MouseEvent) => {
+      const target = e.target as HTMLElement | null
+      if (target && target.closest('a, button, [role="button"], input[type="submit"]')) {
+        setActive(true)
+      }
+    }
 
-    document.addEventListener('mousemove', move)
-    document.querySelectorAll('a, button').forEach(node => {
-      node.addEventListener('mouseenter', onEnter)
-      node.addEventListener('mouseleave', onLeave)
-    })
+    const onOut = (e: MouseEvent) => {
+      const target = e.target as HTMLElement | null
+      if (target && target.closest('a, button, [role="button"], input[type="submit"]')) {
+        setActive(false)
+      }
+    }
+
+    document.addEventListener('mousemove', move, { passive: true })
+    document.addEventListener('mouseover', onOver, { passive: true })
+    document.addEventListener('mouseout', onOut, { passive: true })
 
     return () => {
       document.removeEventListener('mousemove', move)
-      document.querySelectorAll('a, button').forEach(node => {
-        node.removeEventListener('mouseenter', onEnter)
-        node.removeEventListener('mouseleave', onLeave)
-      })
+      document.removeEventListener('mouseover', onOver)
+      document.removeEventListener('mouseout', onOut)
     }
   }, [])
+
+  if (!enabled) return null
 
   return (
     <div
       ref={cursorRef}
+      aria-hidden="true"
       style={{
         position: 'fixed',
         top: 0,
@@ -55,3 +72,4 @@ export function FloatingCursor() {
     />
   )
 }
+

@@ -11,33 +11,58 @@ export function NoiseBackground() {
     const ctx = canvas.getContext('2d')
     if (!ctx) return
 
-    const resize = () => {
+    // Generate a 128x128 noise pattern tile ONCE
+    const tileSize = 128
+    const tileCanvas = document.createElement('canvas')
+    tileCanvas.width = tileSize
+    tileCanvas.height = tileSize
+    const tileCtx = tileCanvas.getContext('2d')
+    if (!tileCtx) return
+
+    const imgData = tileCtx.createImageData(tileSize, tileSize)
+    const d = imgData.data
+    for (let i = 0; i < d.length; i += 4) {
+      const v = Math.random() * 255
+      d[i] = v
+      d[i + 1] = v
+      d[i + 2] = v
+      d[i + 3] = 16 // subtle noise alpha
+    }
+    tileCtx.putImageData(imgData, 0, 0)
+
+    const pattern = ctx.createPattern(tileCanvas, 'repeat')
+    if (!pattern) return
+
+    const render = () => {
       canvas.width = window.innerWidth
       canvas.height = window.innerHeight
+      ctx.fillStyle = pattern
+      ctx.fillRect(0, 0, canvas.width, canvas.height)
     }
-    resize()
-    window.addEventListener('resize', resize)
 
-    let raf: number
-    const render = () => {
-      const img = ctx.createImageData(canvas.width, canvas.height)
-      const d = img.data
-      for (let i = 0; i < d.length; i += 4) {
-        // v needs to be white/gray depending on theme? No, just keep it low-alpha
-        const v = Math.random() * 255
-        d[i] = v; d[i + 1] = v; d[i + 2] = v; d[i + 3] = 12 // and keep canvas opacity
-      }
-      ctx.putImageData(img, 0, 0)
-      raf = requestAnimationFrame(render)
-    }
     render()
-    return () => { cancelAnimationFrame(raf); window.removeEventListener('resize', resize) }
+    window.addEventListener('resize', render)
+
+    return () => {
+      window.removeEventListener('resize', render)
+    }
   }, [])
 
   return (
     <canvas
       ref={canvasRef}
-      style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', zIndex: -10, opacity: 0.2, pointerEvents: 'none' }}
+      aria-hidden="true"
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        zIndex: -10,
+        opacity: 0.25,
+        pointerEvents: 'none',
+      }}
     />
   )
 }
+

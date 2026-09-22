@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { topCities } from '@/lib/data/cities'
 
 const cols = [
   {
@@ -75,6 +76,26 @@ export function Footer() {
               </ul>
             </div>
           ))}
+        </div>
+
+        {/* City Links for Programmatic SEO Internal Equity */}
+        <div style={{ borderTop: '1px solid hsl(var(--border) / 0.1)', paddingTop: '2rem', marginBottom: '2.5rem' }}>
+          <p style={{ fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'hsl(var(--muted-foreground))', marginBottom: '1rem' }}>
+            Cidades com Otimização Local (SEO & GEO)
+          </p>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem 1.25rem' }}>
+            {topCities.map((city) => (
+              <Link
+                key={city.slug}
+                href={`/c/${city.slug}`}
+                style={{ fontSize: '0.75rem', color: 'hsl(var(--muted-foreground))', transition: 'color 0.2s' }}
+                onMouseEnter={e => (e.currentTarget.style.color = 'hsl(var(--foreground))')}
+                onMouseLeave={e => (e.currentTarget.style.color = 'hsl(var(--muted-foreground))')}
+              >
+                Criação de Sites em {city.cityName} ({city.stateAcronym})
+              </Link>
+            ))}
+          </div>
         </div>
 
         <div style={{ borderTop: '1px solid hsl(var(--border) / 0.1)', paddingTop: '1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
