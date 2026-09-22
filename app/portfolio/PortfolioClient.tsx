@@ -7,6 +7,33 @@ import { ArrowLeft, ArrowUpRight } from 'lucide-react'
 
 const projects = [
   {
+    title: 'DeltaLift Elevadores',
+    category: 'Engenharia | Mobilidade',
+    description: 'Site moderno e de alta conversão para empresa de fabricação, modernização e manutenção de elevadores.',
+    image: '/works/delta.webp',
+    year: '2025',
+    tags: ['Site Profissional', 'Engenharia', 'Alta Conversão'],
+    href: 'https://preview.autobotia.com.br/delta/'
+  },
+  {
+    title: 'Alex Oliveira Criminalista',
+    category: 'Advocacia | Especializada',
+    description: 'Portal de autoridade jurídica especializado em direito criminal, com foco em atendimento rápido e credibilidade.',
+    image: '/works/alex-oliveira.webp',
+    year: '2025',
+    tags: ['Direito Criminal', 'Autoridade Digital', 'Advocacia'],
+    href: 'https://www.alexoliveiracriminalista.com.br/'
+  },
+  {
+    title: 'Vendmix Café',
+    category: 'Alimentação | B2B',
+    description: 'Plataforma para locação de máquinas de café corporativo com simulador de planos e catálogo integrado de insumos.',
+    image: '/works/cafe.webp',
+    year: '2025',
+    tags: ['Locação B2B', 'Máquinas de Café', 'Simulador'],
+    href: '/cafe/'
+  },
+  {
     title: 'Agronegócio',
     category: 'Agronegócio | Vendas',
     description: 'Plataforma robusta para o setor agrícola, focada em exposição de maquinários e sementes com alta performance.',
@@ -14,24 +41,6 @@ const projects = [
     year: '2025',
     tags: ['Site Profissional', 'Setor Agrícola', 'Design Premium'],
     href: '/agronegocio/index.html'
-  },
-  {
-    title: 'Clean Work',
-    category: 'Serviços | Conservação',
-    description: 'Site institucional para empresa de limpeza técnica e conservação, focado em geração de leads comerciais.',
-    image: '/works/clean-work.webp',
-    year: '2025',
-    tags: ['Geração de Leads', 'Serviços B2B', 'Limpeza'],
-    href: '/clean-work'
-  },
-  {
-    title: 'Concreto',
-    category: 'Engenharia | Civil',
-    description: 'Landing page para construtora e engenharia, destacando solidez e projetos de infraestrutura de grande porte.',
-    image: '/works/concreto.webp',
-    year: '2024',
-    tags: ['Engenharia', 'Construção Civil', 'Portfólio'],
-    href: '/concreto'
   },
   {
     title: 'Refrigeração',
@@ -117,7 +126,10 @@ export default function PortfolioClient() {
                     ))}
                   </div>
                   
-                  <Link href={p.href} 
+                  <Link
+                    href={p.href}
+                    target={p.href.startsWith('http') ? '_blank' : undefined}
+                    rel={p.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                     style={{ display: 'inline-flex', alignItems: 'center', gap: '0.6rem', fontSize: '0.85rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '2px solid hsl(var(--foreground))', color: 'hsl(var(--foreground))', paddingBottom: '0.4rem', transition: 'gap 0.2s' }}
                     className="view-project-link">
                     Visitar Site <ArrowUpRight size={18} />

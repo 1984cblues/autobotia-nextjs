@@ -34,9 +34,10 @@ const services = [
 ]
 
 const works = [
+  { title: 'DELTA ELEVADORES', subtitle: 'Manutenção & Modernização', image: '/works/delta.webp', year: '2025', href: 'https://preview.autobotia.com.br/delta/' },
+  { title: 'ALEX OLIVEIRA', subtitle: 'Advocacia Especializada', image: '/works/alex-oliveira.webp', year: '2025', href: 'https://www.alexoliveiracriminalista.com.br/' },
+  { title: 'VENDMIX CAFÉ', subtitle: 'Locação de Máquinas B2B', image: '/works/cafe.webp', year: '2025', href: '/cafe/' },
   { title: 'AGRONEGÓCIO', subtitle: 'Soluções para o Campo', image: '/works/agronegocio.webp', year: '2025', href: '/agronegocio/index.html' },
-  { title: 'CLEAN WORK', subtitle: 'Limpeza e Conservação', image: '/works/clean-work.webp', year: '2025', href: '/clean-work' },
-  { title: 'CONCRETO', subtitle: 'Engenharia Civil', image: '/works/concreto.webp', year: '2024', href: '/concreto' },
   { title: 'REFRIGERAÇÃO', subtitle: 'Climatização de Ambientes', image: '/works/refrigeracao.webp', year: '2024', href: '/refrigeracao/index.html' },
   { title: 'WASO STRATEGY', subtitle: 'Consultoria Empresarial', image: '/works/waso-strategy.webp', year: '2025', href: '/waso-strategy/index.html' },
 ]
@@ -109,7 +110,11 @@ export function HomeClient() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
             {works.map((w, i) => (
               <FadeIn key={i} delay={i * 60}>
-                <Link href={w.href} style={{ display: 'block', background: 'hsl(var(--background))', overflow: 'hidden', position: 'relative', cursor: 'pointer', border: '1px solid hsl(var(--border) / 0.1)' }}
+                <Link
+                  href={w.href}
+                  target={w.href.startsWith('http') ? '_blank' : undefined}
+                  rel={w.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  style={{ display: 'block', background: 'hsl(var(--background))', overflow: 'hidden', position: 'relative', cursor: 'pointer', border: '1px solid hsl(var(--border) / 0.1)' }}
                   onMouseEnter={e => { const img = e.currentTarget.querySelector('img') as HTMLImageElement; if (img) img.style.transform = 'scale(1.04)' }}
                   onMouseLeave={e => { const img = e.currentTarget.querySelector('img') as HTMLImageElement; if (img) img.style.transform = 'scale(1)' }}>
                   <div style={{ aspectRatio: '4/3', overflow: 'hidden', position: 'relative' }}>
