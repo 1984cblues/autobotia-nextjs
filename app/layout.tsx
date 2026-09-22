@@ -76,6 +76,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.autobotia.com.br',
   },
+  verification: {
+    google: 'googlee129306cdf2e55db',
+  },
 }
 
 export default function RootLayout({
